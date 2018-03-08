@@ -1,0 +1,331 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     12817,        321]
+NotebookOptionsPosition[     11654,        276]
+NotebookOutlinePosition[     12008,        292]
+CellTagsIndexPosition[     11965,        289]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell["\<\
+If tomorrow it is going to rain,
+there is possibility of:\
+\>", "Text",
+ CellChangeTimes->{{3.6982989334863586`*^9, 3.698298972237245*^9}, 
+   3.698299106674057*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"0.9", "*", "0.8"}]], "Input",
+ CellChangeTimes->{{3.698299083415944*^9, 3.698299104747908*^9}}],
+
+Cell[BoxData["0.7200000000000001`"], "Output",
+ CellChangeTimes->{3.698299105212676*^9}]
+}, Open  ]],
+
+Cell["\<\
+That a and b make the same judgment that it is going to rain.
+
+Also, if it is not going to rain, there is a possibility of:\
+\>", "Text",
+ CellChangeTimes->{{3.6982991108459797`*^9, 3.6982991325973797`*^9}, {
+  3.698299196482317*^9, 3.6982992343938847`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"0.1", "*", "0.2"}]], "Input",
+ CellChangeTimes->{{3.698299237581141*^9, 3.6982992424823*^9}}],
+
+Cell[BoxData["0.020000000000000004`"], "Output",
+ CellChangeTimes->{3.698299243064479*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "That a and b make the same and ",
+ StyleBox["wrong", "Subsubsection"],
+ " judgment that it is going to rain.\n\nWhat do these mean to us?\n\nWell,\n\
+\nWe see that we have considered all possibilities where a and b both make \
+the judgment of raining.\n\nTo be better-rounded with this problem, let\
+\[CloseCurlyQuote]s calculate other possibilities:"
+}], "Text",
+ CellChangeTimes->{{3.6982992461856527`*^9, 3.698299294895421*^9}, {
+  3.698299343556041*^9, 3.6982993730228786`*^9}, {3.698299440478078*^9, 
+  3.6982994776980124`*^9}, {3.698299556270482*^9, 3.698299881280346*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"0.9", "*", "0.2"}], "\[IndentingNewLine]", 
+ RowBox[{"0.8", "*", "0.1"}]}], "Input",
+ CellChangeTimes->{{3.698299825097221*^9, 3.698299826076911*^9}, {
+  3.698299885778389*^9, 3.69829991495892*^9}}],
+
+Cell[BoxData["0.18000000000000002`"], "Output",
+ CellChangeTimes->{3.69829991676833*^9}],
+
+Cell[BoxData["0.08000000000000002`"], "Output",
+ CellChangeTimes->{3.698299916772162*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "Well, they seem not clear. to make a table for them, we define that \
+\[OpenCurlyDoubleQuote]1\[CloseCurlyDoubleQuote] means a or b ",
+ StyleBox["predicts", "Subsubsection"],
+ " it will rain, while 0 means not:"
+}], "Text",
+ CellChangeTimes->{{3.698299931613297*^9, 3.6983000078440533`*^9}, {
+  3.6983000467024183`*^9, 3.698300051662978*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+     "Possibility", ",", "a1b1", ",", "a1b0", ",", "a0b1", ",", "a0b0"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{"Rain", ",", "0.72", ",", "0.18", ",", "0.08", ",", "0.02"}], 
+     "}"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"Not", " ", "Rain"}], ",", "0.02", ",", "0.08", ",", "0.18", 
+      ",", "0.72"}], "}"}]}], "}"}], "//", "TableForm"}]], "Input",
+ CellChangeTimes->{{3.698300018781971*^9, 3.698300112131071*^9}, {
+  3.698300148764719*^9, 3.698300191477724*^9}, {3.698300876461649*^9, 
+  3.698300896425028*^9}, {3.69830096478581*^9, 3.698300971088976*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"Possibility", "a1b1", "a1b0", "a0b1", "a0b0"},
+    {"Rain", "0.72`", "0.18`", "0.08`", "0.02`"},
+    {
+     RowBox[{"Not", " ", "Rain"}], "0.02`", "0.08`", "0.18`", "0.72`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{3.698300191932179*^9}]
+}, Open  ]],
+
+Cell["Or:", "Text",
+ CellChangeTimes->{{3.698300778650955*^9, 3.698300784742038*^9}, {
+  3.698300864578697*^9, 3.698300867244728*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Transpose", "[", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "Possibility", ",", "a1b1", ",", "a1b0", ",", "a0b1", ",", "a0b0"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{"Rain", ",", "0.72", ",", "0.18", ",", "0.08", ",", "0.02"}], 
+      "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"Not", " ", "Rain"}], ",", "0.02", ",", "0.08", ",", "0.18", 
+       ",", "0.72"}], "}"}]}], "}"}], "]"}], "//", "TableForm"}]], "Input",
+ CellChangeTimes->{{3.698300929933385*^9, 3.698300959193817*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"Possibility", "Rain", 
+     RowBox[{"Not", " ", "Rain"}]},
+    {"a1b1", "0.72`", "0.02`"},
+    {"a1b0", "0.18`", "0.08`"},
+    {"a0b1", "0.08`", "0.18`"},
+    {"a0b0", "0.02`", "0.72`"}
+   },
+   GridBoxAlignment->{
+    "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+     "RowsIndexed" -> {}},
+   GridBoxSpacings->{"Columns" -> {
+       Offset[0.27999999999999997`], {
+        Offset[2.0999999999999996`]}, 
+       Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+       Offset[0.2], {
+        Offset[0.4]}, 
+       Offset[0.2]}, "RowsIndexed" -> {}}],
+  Function[BoxForm`e$, 
+   TableForm[BoxForm`e$]]]], "Output",
+ CellChangeTimes->{
+  3.698300900904558*^9, {3.698300937040626*^9, 3.6983009601574*^9}}]
+}, Open  ]],
+
+Cell[TextData[{
+ "What does it mean then?\n\n\:597d\:ff0c\:4e0b\:9762\:7528\:4e2d\:6587\:3002\
+\n\n\:4e0d\:59a8\:5047\:8bbe\:6211\:4eec\:8bbe\:7f6e\:4e00\:4e2a\:65e0\:9650\
+\:957f\:7684\:ff0c\:786e\:5b9a\:7684\:65e5\:5b50\:5e8f\:5217\:ff0c\:5b83\:4eec\
+\:8981\:4e48\:4e0b\:96e8\:ff0c\:8981\:4e48\:4e0d\:4e0b\:96e8\:ff0c",
+ StyleBox["\:5b83\:4eec\:53ef\:4ee5\:662f\:968f\:673a\:5206\:5e03\:7684\:ff0c\
+\:4e5f\:53ef\:4ee5\:662f\:6709\:89c4\:5f8b\:7684\:5206\:5e03\:ff08\:59820\
+\:ff0c0\:ff0c0\:ff0c1\:5e8f\:5217\:ff09", "Subsubsection"],
+ "\:3002\:7136\:540e\:8ba9a\:548cb\:53bb\:9884\:6d4b\:3002\n\n\:5982\:679c\
+\:4e0b\:96e8\:ff1a\:4e0d\:4e0b\:96e8\:7684\:6bd4\:4f8b\:662f4:6\:ff0c\:6211\
+\:4eec\:4f1a\:770b\:5230\:ff0c\n\n\
+\:5e73\:5747\:67090.4*0.72=0.228\:7684\:6b21\:6570\:5b83\:4eec\:540c\:65f6\
+\:731c\:6d4b\:5e76\:731c\:6b63\:786e\:4e86\:4e0b\:96e8\:ff1b\n\n\
+\:800c\:67090.6*0.02=0.012\:7684\:6b21\:6570\:5b83\:4eec\:540c\:65f6\:731c\
+\:6d4b\:4e0b\:96e8\:4f46\:5e76\:6ca1\:6709\:771f\:6b63\:4e0b\:96e8\:3002\n\n\
+\:901a\:8fc7\:7c7b\:4f3c\:7684\:65b9\:5f0f\:6211\:4eec\:5f97\:5230\:4e86\:4e00\
+\:7cfb\:5217",
+ StyleBox["a\:548cb\:7684\:731c\:6d4b\:5e8f\:5217\:53ca\:5b83\:4eec\:7684\
+\:6b63\:786e\:4e0e\:5426", "Subsubsection"],
+ "\:3002\n\n\:7136\:540e\:6211\:4eec\:53ef\:4ee5\:820d\:5f03",
+ StyleBox["\:771f\:6b63\:4e0b\:96e8\:7684\:5e8f\:5217\:ff0c\:800c\:53ea\:7740\
+\:773c\:4e8e\:4e0a\:8ff0\:5e8f\:5217\:3002\n\n", "Subsubsection"],
+ "\:6211\:4eec\:53d1\:73b0\:ff0ca\:548cb\:540c\:65f6\:9884\:6d4b\:4e0b\:96e8\
+\:7684\:6982\:7387\:662f0.240\:ff0c\:800c\:4e14\:540c\:65f6\:5224\:65ad\:6b63\
+\:786e\:7684\:6982\:7387\:662f0.228."
+}], "Text",
+ CellChangeTimes->{{3.698305172769944*^9, 3.6983051921360064`*^9}, {
+  3.698305395374929*^9, 3.698305966382133*^9}, {3.698307039336515*^9, 
+  3.698307107542943*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"0.228", "/", "0.240"}]], "Input",
+ CellChangeTimes->{{3.698305968684265*^9, 3.6983059804536753`*^9}}],
+
+Cell[BoxData["0.9500000000000001`"], "Output",
+ CellChangeTimes->{3.6983059812167873`*^9}]
+}, Open  ]],
+
+Cell[TextData[{
+ "\:4e5f\:5c31\:662f\:8bf4\:ff0c",
+ StyleBox["\:5728\:540c\:65f6\:9884\:6d4b\:5230\:4e0b\:96e8\:65f6\:ff0c\:5b83\
+\:4eec\:6b63\:786e\:7684\:6982\:7387\:662f0.95.\n\n", "Subsubsection"],
+ "\:6211\:4eec\:6362\:4e00\:4e2a\:4f53\:7cfb\:6765\:601d\:8003\:3002\n\n",
+ StyleBox["\:5047\:8bbe\:8fd9\:4e2a\:5730\:65b9\:5176\:5b9e\:6c38\:8fdc\:4e0d\
+\:4e0b\:96e8\:3002\n\n\:6211\:4eec\:4ecd\:65e7\:80fd\:591f\:5047\:8bbe\:ff0ca\
+\:548cb\:7684\:9884\:6d4b\:6b63\:786e\:7387\:662f0.9\:548c0.8.\n\n\
+\:4e5f\:5c31\:662f\:8bf4\:ff0c\:5728\:6240\:6709\:4e0d\:4e0b\:96e8\:7684\:65e5\
+\:5b50\:91cc\:ff0ca\:548cb\:4ecd\:7136\:67090.02\[Times]\:603b\:6570\:7684\
+\:6b21\:6570\:540c\:65f6\:731c\:6d4b\:4e86\:660e\:5929\:662f\:4e0b\:96e8\:7684\
+\:ff0c\:800c\:8fd9\:4e9b\:5224\:65ad\:90fd\:662f\:9519\:7684\:3002\n\n", 
+  "Subsubsection"],
+ StyleBox["\:90a3\:4e48\:4e3a\:4ec0\:4e48\:4f1a\:8fd9\:6837\:ff1f\n\n", 
+  "Subsection"],
+ StyleBox["\:8fd9\:662f\:7531\:4e8e\[OpenCurlyDoubleQuote]a\:548cb\:9884\:6d4b\
+\:6b63\:786e\:7684\:6982\:7387\:662f\:4e00\:4e2a\:786e\:5b9a\:503c\
+\[CloseCurlyDoubleQuote]\:672c\:8eab\:5c31\:5305\:542b\:4e86\:4e00\:4e2a\:51b3\
+\:5b9a\:7684\:6982\:5ff5\:3002\n\n\:6362\:53e5\:8bdd\:8bf4\:ff0c\:6211\:4eec\
+\:662f\:5728\[OpenCurlyDoubleQuote]\:5df2\:77e5\:6240\:6709\:65e5\:5b50\:7684\
+\:4e0b\:96e8\:4e0e\:5426\:7684\:60c5\:51b5\[CloseCurlyDoubleQuote]\:4e0b\:53cd\
+\:63a8a\:548cb\:7684\:9884\:6d4b\:6b63\:786e\:7684\:6982\:7387\:3002\n\n\
+\:800c\:5bf9\:4e8e\:5b9e\:9645\:4e0a\:65e0\:6cd5\:731c\:6d4b\:660e\:5929\:7684\
+\:5929\:6c14\:662f\:4ec0\:4e48\:7684\:6211\:4eec\:ff0c\:53ea\:80fd\:5c06\:4e0b\
+\:96e8\:7684\:65e5\:5b50\:7684\:6bd4\:4f8b\:4e5f\:5305\:542b\:8fdb\:4e00\:4e2a\
+\:968f\:673a\:7684\:90e8\:5206\:3002\n\n", "Subsubsection"],
+ "\:4f46\:5176\:5b9e\:8fd9\:4e2a\:4f1a\:8ba9\:4eba\:840c\:53d1\:51fa\:4e00\
+\:4e2a\:95ee\:9898\:ff0c\:5c31\:662f\:8fd9\:4e2a\:4e0b\:96e8\:7684\:65e5\:5b50\
+\:7684\:6bd4\:4f8b\:662f\:5426\:4e5f\:5e94\:8be5\:5305\:542b\:8fdba\:548cb\
+\:7684\:6b63\:786e\:7387\:3002\:7136\:800c\:7ec6\:7ec6\:7684\:601d\:8003\:4f1a\
+\:8ba9\:6211\:4eec\:660e\:767d\:5230\:ff0c\:4e8b\:5b9e\:4e0a\:8fd9\:6837\:7684\
+\:65b9\:6cd5\:7406\:8bba\:4e0a\:662f\:505a\:4e0d\:5230\:7684\:3002\n\n",
+ StyleBox["\:6211\:4eec\:53ef\:4ee5\:5047\:8bbe\:81ea\:5df1\:662f\:4e0a\:5e1d\
+\:800c\:521b\:9020\:8fd9\:6837\:7684\:6761\:4ef6\:ff0c\:800c\:6211\:4eec\:4f5c\
+\:4e3a\:4eba\:65f6\:53ea\:80fd\:770ba\:548cb\:7684\:731c\:6d4b\:5e8f\:5217\
+\:3002\n", "Subsubsection"],
+ "\n\:800c\:7a0d\:5fae\:4e00\:60f3\:5c31\:4f1a\:53d1\:73b0\:ff0c\:4e0b\:96e8\
+\:7684\:65e5\:5b50\:7684\:6bd4\:4f8b\:4ee5\:53ca\:5206\:5e03\:60c5\:51b5\:672c\
+\:8eab\:4e0d\:5f71\:54cda\:548cb\:7684\:6b63\:786e\:7387\:3002\:65e0\:8bba\
+\:4e00\:76f4\:4e0b\:96e8\:8fd8\:662f\:4e00\:76f4\:4e0d\:4e0b\:96e8\:ff0ca\
+\:548cb\:4ecd\:65e7\:80fd\:591f\:7a33\:5b9a\:5730\:62e5\:6709\:5b83\:4eec\
+\:7684\:6b63\:786e\:7387\:3002\n\n",
+ StyleBox["\:6362\:8a00\:4e4b\:ff0c\:56e0\:4e3a\:9898\:76ee\:7684\:6761\:4ef6\
+\:662f\:5728\:4e00\:4e2a\:5b8f\:89c2\:7684\:6761\:4ef6\:4e0b\:7ed9\:51fa\:7684\
+\:ff0c\:90a3\:4e48\:5728\:63a8\:5bfc\:8fc7\:7a0b\:4e2d\:4e5f\:53ea\:80fd\:4ee5\
+\:5b8f\:89c2\:7684\:60c5\:51b5\:4e0b\:8fdb\:884c\:3002", "Subsubsection"]
+}], "Text",
+ CellChangeTimes->{{3.698305985131363*^9, 3.698306179219718*^9}, {
+  3.698306233151375*^9, 3.6983063092349358`*^9}, {3.6983063397088203`*^9, 
+  3.6983063910671787`*^9}, {3.698306445959489*^9, 3.6983064813511887`*^9}, {
+  3.698306522601671*^9, 3.698306877238639*^9}, {3.698306953639426*^9, 
+  3.69830701246872*^9}, {3.698307122479555*^9, 3.698307125198099*^9}}]
+},
+WindowSize->{808, 600},
+WindowMargins->{{60, Automatic}, {Automatic, 24}},
+FrontEndVersion->"11.0 for Mac OS X x86 (32-bit, 64-bit Kernel) (July 28, \
+2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 175, 5, 49, "Text"],
+Cell[CellGroupData[{
+Cell[758, 29, 119, 2, 32, "Input"],
+Cell[880, 33, 88, 1, 32, "Output"]
+}, Open  ]],
+Cell[983, 37, 268, 6, 68, "Text"],
+Cell[CellGroupData[{
+Cell[1276, 47, 117, 2, 32, "Input"],
+Cell[1396, 51, 90, 1, 32, "Output"]
+}, Open  ]],
+Cell[1501, 55, 597, 10, 189, "Text"],
+Cell[CellGroupData[{
+Cell[2123, 69, 223, 4, 54, "Input"],
+Cell[2349, 75, 88, 1, 32, "Output"],
+Cell[2440, 78, 89, 1, 32, "Output"]
+}, Open  ]],
+Cell[2544, 82, 360, 7, 56, "Text"],
+Cell[CellGroupData[{
+Cell[2929, 93, 719, 17, 75, "Input"],
+Cell[3651, 112, 725, 19, 78, "Output"]
+}, Open  ]],
+Cell[4391, 134, 134, 2, 30, "Text"],
+Cell[CellGroupData[{
+Cell[4550, 140, 625, 16, 75, "Input"],
+Cell[5178, 158, 784, 22, 114, "Output"]
+}, Open  ]],
+Cell[5977, 183, 1817, 28, 388, "Text"],
+Cell[CellGroupData[{
+Cell[7819, 215, 125, 2, 32, "Input"],
+Cell[7947, 219, 90, 1, 32, "Output"]
+}, Open  ]],
+Cell[8052, 223, 3598, 51, 782, "Text"]
+}
+]
+*)
+
+(* End of internal cache information *)
+
