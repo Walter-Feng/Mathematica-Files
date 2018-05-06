@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    599773,      10634]
-NotebookOptionsPosition[    597897,      10592]
-NotebookOutlinePosition[    598255,      10608]
-CellTagsIndexPosition[    598212,      10605]
+NotebookDataLength[    605752,      10802]
+NotebookOptionsPosition[    603215,      10750]
+NotebookOutlinePosition[    603574,      10766]
+CellTagsIndexPosition[    603531,      10763]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -10588,10 +10588,168 @@ Cell[BoxData["\<\"/Users/Apple/Documents/NMR.eps\"\>"], "Output",
   3.7322585916266003`*^9, {3.732258675838559*^9, 
    3.732258704751668*^9}},ExpressionUUID->"4ff62f08-713c-4700-92ab-\
 d4cc41137fda"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"xA", "*", 
+      FractionBox[
+       RowBox[{"Exp", "[", 
+        FractionBox[
+         RowBox[{"-", "HA"}], 
+         RowBox[{"R", " ", "T"}]], "]"}], 
+       RowBox[{"Exp", "[", 
+        FractionBox[
+         RowBox[{"-", "HA"}], 
+         RowBox[{"R", " ", "TA"}]], "]"}]]}], "+", 
+     RowBox[{"xB", "*", 
+      FractionBox[
+       RowBox[{"Exp", "[", 
+        FractionBox[
+         RowBox[{"-", "HB"}], 
+         RowBox[{"R", " ", "T"}]], "]"}], 
+       RowBox[{"Exp", "[", 
+        FractionBox[
+         RowBox[{"-", "HB"}], 
+         RowBox[{"R", " ", "TB"}]], "]"}]]}]}], "/.", 
+    RowBox[{"R", "\[Rule]", 
+     RowBox[{"8.314", "\[Equal]", "1"}]}]}], ",", "T"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7334795213854227`*^9, 3.733479575010648*^9}, {
+  3.7334797786675386`*^9, 
+  3.733479781936853*^9}},ExpressionUUID->"2255fdf5-901b-40d9-81ab-\
+a2fff1dcff9d"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Solve","naqs",
+   "\"\\!\\(\\*RowBox[{RowBox[{SuperscriptBox[\\\"\[ExponentialE]\\\", \
+RowBox[{RowBox[{\\\"-\\\", FractionBox[\\\"HA\\\", RowBox[{\\\"False\\\", \
+\\\" \\\", \\\"T\\\"}]]}], \\\"+\\\", FractionBox[\\\"HA\\\", \
+RowBox[{\\\"False\\\", \\\" \\\", \\\"TA\\\"}]]}]], \\\" \\\", \\\"xA\\\"}], \
+\\\"+\\\", RowBox[{SuperscriptBox[\\\"\[ExponentialE]\\\", RowBox[{RowBox[{\\\
+\"-\\\", FractionBox[\\\"HB\\\", RowBox[{\\\"False\\\", \\\" \\\", \
+\\\"T\\\"}]]}], \\\"+\\\", FractionBox[\\\"HB\\\", RowBox[{\\\"False\\\", \
+\\\" \\\", \\\"TB\\\"}]]}]], \\\" \\\", \\\"xB\\\"}]}]\\) is not a quantified \
+system of equations and inequalities.\"",2,47,25,24217044653580082792,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{3.733479576012834*^9, 
+  3.733479782421048*^9},ExpressionUUID->"f3f242ad-967b-4a9e-9956-\
+4682faddb21d"],
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["HA", 
+         RowBox[{"False", " ", "T"}]]}], "+", 
+       FractionBox["HA", 
+        RowBox[{"False", " ", "TA"}]]}]], " ", "xA"}], "+", 
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["HB", 
+         RowBox[{"False", " ", "T"}]]}], "+", 
+       FractionBox["HB", 
+        RowBox[{"False", " ", "TB"}]]}]], " ", "xB"}]}], ",", "T"}], 
+  "]"}]], "Output",
+ CellChangeTimes->{3.733479576017166*^9, 
+  3.733479782467594*^9},ExpressionUUID->"579c8392-0c9d-40fa-be37-\
+e273512789b6"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Solve", "[", 
+  RowBox[{"[", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"xA", "*", 
+        FractionBox[
+         RowBox[{"Exp", "[", 
+          FractionBox[
+           RowBox[{"-", "HA"}], 
+           RowBox[{"R", " ", "T"}]], "]"}], 
+         RowBox[{"Exp", "[", 
+          FractionBox[
+           RowBox[{"-", "HA"}], 
+           RowBox[{"R", " ", "TA"}]], "]"}]]}], "+", 
+       RowBox[{"xB", "*", 
+        FractionBox[
+         RowBox[{"Exp", "[", 
+          FractionBox[
+           RowBox[{"-", "HB"}], 
+           RowBox[{"R", " ", "T"}]], "]"}], 
+         RowBox[{"Exp", "[", 
+          FractionBox[
+           RowBox[{"-", "HB"}], 
+           RowBox[{"R", " ", "TB"}]], "]"}]]}]}], "/.", 
+      RowBox[{"R", "\[Rule]", "8.314"}]}], ")"}], ",", "T"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7334798161237*^9, 
+  3.733479857843359*^9}},ExpressionUUID->"ccd454c2-b91d-4ff7-b0be-\
+92652eb3dd1a"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Reduce","naqs",
+   "\"\\!\\(\\*RowBox[{RowBox[{SuperscriptBox[\\\"\[ExponentialE]\\\", \
+RowBox[{RowBox[{\\\"-\\\", FractionBox[RowBox[{\\\"0.12027904738994467`\\\", \
+\\\" \\\", \\\"HA\\\"}], \\\"T\\\"]}], \\\"+\\\", \
+FractionBox[RowBox[{\\\"0.12027904738994467`\\\", \\\" \\\", \\\"HA\\\"}], \\\
+\"TA\\\"]}]], \\\" \\\", \\\"xA\\\"}], \\\"+\\\", RowBox[{SuperscriptBox[\\\"\
+\[ExponentialE]\\\", RowBox[{RowBox[{\\\"-\\\", \
+FractionBox[RowBox[{\\\"0.12027904738994467`\\\", \\\" \\\", \\\"HB\\\"}], \\\
+\"T\\\"]}], \\\"+\\\", FractionBox[RowBox[{\\\"0.12027904738994467`\\\", \\\" \
+\\\", \\\"HB\\\"}], \\\"TB\\\"]}]], \\\" \\\", \\\"xB\\\"}]}]\\) is not a \
+quantified system of equations and inequalities.\"",2,49,26,
+   24217044653580082792,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.733479839667665*^9},ExpressionUUID->"9f259c5f-bc23-4d3d-8534-\
+989138d0e77a"],
+
+Cell[BoxData[
+ RowBox[{"Reduce", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox[
+         RowBox[{"0.12027904738994467`", " ", "HA"}], "T"]}], "+", 
+       FractionBox[
+        RowBox[{"0.12027904738994467`", " ", "HA"}], "TA"]}]], " ", "xA"}], 
+    "+", 
+    RowBox[{
+     SuperscriptBox["\[ExponentialE]", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox[
+         RowBox[{"0.12027904738994467`", " ", "HB"}], "T"]}], "+", 
+       FractionBox[
+        RowBox[{"0.12027904738994467`", " ", "HB"}], "TB"]}]], " ", "xB"}]}], 
+   ",", "T"}], "]"}]], "Output",
+ CellChangeTimes->{3.7334797979384117`*^9, 
+  3.733479839695203*^9},ExpressionUUID->"13c485b6-9836-441f-8668-\
+d65aac1f9f66"]
 }, Open  ]]
 },
 WindowSize->{808, 602},
-WindowMargins->{{Automatic, 95}, {7, Automatic}},
+WindowMargins->{{75, Automatic}, {18, Automatic}},
 FrontEndVersion->"11.2 for Mac OS X x86 (32-bit, 64-bit Kernel) (September \
 10, 2017)",
 StyleDefinitions->"Default.nb"
@@ -10635,6 +10793,16 @@ Cell[14690, 337, 43368, 1228, 2521, "Output",ExpressionUUID->"d520c421-ff1e-4122
 Cell[CellGroupData[{
 Cell[58095, 1570, 539564, 9013, 645, "Input",ExpressionUUID->"df17fc90-db02-469b-b1c8-68457215222c"],
 Cell[597662, 10585, 219, 4, 34, "Output",ExpressionUUID->"4ff62f08-713c-4700-92ab-d4cc41137fda"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[597918, 10594, 956, 30, 64, "Input",ExpressionUUID->"2255fdf5-901b-40d9-81ab-a2fff1dcff9d"],
+Cell[598877, 10626, 887, 15, 33, "Message",ExpressionUUID->"f3f242ad-967b-4a9e-9956-4682faddb21d"],
+Cell[599767, 10643, 713, 23, 47, "Output",ExpressionUUID->"579c8392-0c9d-40fa-be37-e273512789b6"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[600517, 10671, 962, 31, 64, "Input",ExpressionUUID->"ccd454c2-b91d-4ff7-b0be-92652eb3dd1a"],
+Cell[601482, 10704, 932, 17, 33, "Message",ExpressionUUID->"9f259c5f-bc23-4d3d-8534-989138d0e77a"],
+Cell[602417, 10723, 782, 24, 46, "Output",ExpressionUUID->"13c485b6-9836-441f-8668-d65aac1f9f66"]
 }, Open  ]]
 }
 ]
