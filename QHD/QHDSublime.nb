@@ -1,0 +1,128 @@
+SetDirectory[NotebookDirectory[]];
+<< "QHD`"
+
+
+QHDInput[inputtype_,basicsets_,basicsetscut_,Hamiltonian_, InitialA_, InitialB_, variable_, timeinterval_, timegoal_, grade_, Integradeend_, filename_] :=
+  Module[{string1, string2, Format, MaxStringLength = 20},
+   Format[stringlist_] := (StringJoin @@ (# <> (StringJoin @@ Table[" ", MaxStringLength - StringLength[#]]) & /@ stringlist)) <> "\n";
+   string1 = StringJoin @@ (Format /@ {
+            {"Input type:",inputtype},
+            {"Basic sets type:",basicsets},
+            {"Basic sets cut:",ToString@basicsetscut},
+            {"Hamiltonian:", ToString@FullForm[Hamiltonian]},
+            {"Initial A:", ToString@FullForm[InitialA]},
+            {"Initial B:", ToString@FullForm[InitialB]},
+            {"variable:", ToString@variable},
+            {"Time interval:", ToString@timeinterval},
+            {"Time Goal:", ToString@timegoal},
+            {"QHD grade:",ToString@grade}
+            {"Integration Cut:", ToString@Integradeend}});
+   string2 = Switch[inputtype,
+      "Mean",StringJoin @@ (Format /@ Transpose[{(ToString[#, InputForm] <> ":") & /@ Sort@DeleteDuplicates[Times @@@ Subsets[Flatten[Table[variable, basicsetscut]]]]}]),
+
+      "Coefficient", 
+        Switch[Basicsets,
+          "Polynomial",StringJoin @@ (Format /@ Transpose[{(ToString[#, InputForm] <> ":") & /@ Sort@DeleteDuplicates[Times @@@ Subsets[Flatten[Table[variable, basicsetscut]]]]}]),
+
+          "Exponential",StringJoin @@ (Format /@ Transpose[{(ToString[#, InputForm] <> ":") & /@ Exp /@Sort@DeleteDuplicates[Plus @@@ Subsets[Flatten[Table[variable, basicsetscut]]]]}])
+
+          ]
+
+   ]
+   (*string2 = StringJoin @@ (Format /@ Transpose[{(ToString[#, InputForm] <> ":") & /@ Sort@DeleteDuplicates[Times @@@ Subsets[Flatten[Table[variable, grade]]]]}]);
+   Export[NotebookDirectory[] <> filename, string1 <> "Method:\n" <> "Mean Value Input" <> "\n" <> string2]*)
+   Export[NotebookDirectory[] <> filename, string1 <> "\n" <> string2]
+];
+
+
+PolynomialQHD[Hamiltonian_,InitialA_,InitialB_,meanlist_,variable_,timeinterval_,timegoal_,grade_,Integradeend_]:=
+Module[{MoyalBracketList,PolynomialList,Normalizer,Tuner,TunedMeanList,VarianceList,TemporaryCoefficientList,TemporaryA,TemporaryB,EquationList,TunerList,UnitaryTransformation,Polynomialfunction,coefficient,equationlist,CoefficientResult,timecounter=0,MeanChangeList},
+Tuner[polynomialfunction_]:=If[MatchQ[polynomialfunction/.{Times->List,Power->List},_List],Times@@(ParallelMap[1/#!&,Cases[Flatten[polynomialfunction/.{Times->List,Power->List}],_Integer]]),1];
+
+PolynomialList=Sort@DeleteDuplicates[Times@@@Subsets[Flatten[Table[variable,grade]]]];
+TunerList=Tuner/@PolynomialList;
+TunedMeanList=TunerList*meanlist;
+PolynomialList=TunerList*PolynomialList;MoyalBracketList=ParallelMap[MoyalBracket[#,Hamiltonian,variable,grade]&,PolynomialList];
+
+TemporaryA=InitialA;
+TemporaryB=InitialB;
+
+TemporaryCoefficientList=Module[{tempseries,result},
+result=Solve[ParallelMap[GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,(Table[tempseries[i],{i,Length[PolynomialList]}].PolynomialList)*#&,Integradeend],PolynomialList]==TunedMeanList,Table[tempseries[i],{i,Length[PolynomialList]}]];
+  Table[tempseries[i],{i,Length[PolynomialList]}]/.result
+  ];
+
+Normalizer=ParallelGaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,TemporaryCoefficientList .PolynomialList,Integradeend];
+While[{timecounter<=timegoal},
+timecounter+=timeinterval;
+MeanChangeList=ParallelMap[GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,Normalizer*TemporaryCoefficientList .PolynomialList*#,Integradeend]&, MoyalBracketList];
+TunedMeanList+=MeanChangeList;
+TemporaryCoefficientList=Module[{tempseries,result},
+result=Solve[ParallelMap[GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,(Table[tempseries[i],{i,Length[PolynomialList]}].PolynomialList)*#&,Integradeend],PolynomialList]==TunedMeanList,Table[tempseries[i],{i,Length[PolynomialList]}]];
+  Table[tempseries[i],{i,Length[PolynomialList]}]/.result
+  ];
+Normalizer=ParallelGaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,TemporaryCoefficientList .PolynomialList,Integradeend];
+  ]
+];
+
+
+
+
+
+
+
+ExponentialQHD[Hamiltonian_,InitialA_,InitialB_,meanlist_,variable_,timeinterval_,timegoal_,grade_,Integradeend_]:=
+Module[{MoyalBracketList,PolynomialList,Normalizer,Tuner,TunedMeanList,VarianceList,TemporaryCoefficientList,TemporaryA,TemporaryB,EquationList,TunerList,Polynomialfunction,coefficient,equationlist,CoefficientResult,timecounter=0,MeanChangeList},
+Tuner[polynomialfunction_]:=If[MatchQ[polynomialfunction/.{Times->List,Power->List},_List],Times@@(ParallelMap[1/#!&,Cases[Flatten[polynomialfunction/.{Times->List,Power->List}],_Integer]]),1];
+
+PolynomialList=Sort@DeleteDuplicates[Times@@@Subsets[Flatten[Table[variable,grade]]]];
+TunerList=Tuner/@PolynomialList;
+TunedMeanList=TunerList*meanlist;
+PolynomialList=TunerList*PolynomialList;MoyalBracketList=ParallelMap[MoyalBracket[#,Hamiltonian,variable,grade]&,PolynomialList];
+
+TemporaryA=InitialA;
+TemporaryB=InitialB;
+
+TemporaryCoefficientList=Module[{tempseries,result},
+result=Solve[ParallelMap[GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,(Table[tempseries[i],{i,Length[PolynomialList]}].PolynomialList)*#&,Integradeend],PolynomialList]==TunedMeanList,Table[tempseries[i],{i,Length[PolynomialList]}]];
+  Table[tempseries[i],{i,Length[PolynomialList]}]/.result
+  ];
+
+Normalizer=ParallelGaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,TemporaryCoefficientList .PolynomialList,Integradeend];
+While[{timecounter<=timegoal},
+timecounter+=timeinterval;
+MeanChangeList=ParallelMap[GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,Normalizer*TemporaryCoefficientList .PolynomialList*#,Integradeend]&, MoyalBracketList];
+TunedMeanList+=MeanChangeList;
+TemporaryCoefficientList=Module[{tempseries,result},
+result=Solve[ParallelMap[GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,(Table[tempseries[i],{i,Length[PolynomialList]}].PolynomialList)*#&,Integradeend],PolynomialList]==TunedMeanList,Table[tempseries[i],{i,Length[PolynomialList]}]];
+  Table[tempseries[i],{i,Length[PolynomialList]}]/.result
+  ];
+Normalizer=ParallelGaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,TemporaryCoefficientList .PolynomialList,Integradeend];
+  ]
+];
+
+
+SelfConvergingGaussianIntegrate[variableList_, A_, B_, function_, precisiongoal_] := 
+Module[{inverse, b, modifiedfunction, temp, n = 0,result}, 
+  inverse = Inverse[A]; 
+  b = inverse.B; 
+  temp=Evaluate[
+      Sqrt[(2 Pi)^Length[variableList]/Det[A]]
+        *Exp[0.5*B.inverse.B]*1/n!*
+        Nest[Function[a, 0.5*Flatten[inverse].(D[a, ##] & @@@ Tuples[variableList, 2])], (function /. Rule @@@ Transpose[{variableList, variableList + b}]), n]
+        ] /. Rule @@@ Transpose[{variableList, Table[0, Length[variableList]]}];
+
+  While[
+    Abs[temp]>10^precisiongoal,
+    result+=temp;
+    n++;
+    temp=Evaluate[
+      Sqrt[(2 Pi)^Length[variableList]/Det[A]]
+        *Exp[0.5*B.inverse.B]*1/n!*
+        Nest[Function[a, 0.5*Flatten[inverse].(D[a, ##] & @@@ Tuples[variableList, 2])], (function /. Rule @@@ Transpose[{variableList, variableList + b}]), n]
+        ] /. Rule @@@ Transpose[{variableList, Table[0, Length[variableList]]}];
+    ];
+
+    result
+];
+

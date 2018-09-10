@@ -1,0 +1,860 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     34231,        852]
+NotebookOptionsPosition[     31749,        809]
+NotebookOutlinePosition[     32129,        825]
+CellTagsIndexPosition[     32086,        822]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"Tormentor", "[", 
+    RowBox[{"weightfunction_", ",", "fontsize_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"database", ",", "algorithm", ",", 
+       RowBox[{"wordcount", "=", "0"}]}], "}"}], ",", 
+     RowBox[{
+      RowBox[{"database", "=", 
+       RowBox[{"First", "@", 
+        RowBox[{"Import", "[", "\"\<database.xlsx\>\"", "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"algorithm", ":=", 
+       RowBox[{"Module", "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+          "index", ",", "title", ",", "expression", ",", "correctcounter", 
+           ",", "counter", ",", "word"}], "}"}], ",", 
+         RowBox[{
+          RowBox[{"word", "=", 
+           RowBox[{"RandomChoice", "[", 
+            RowBox[{
+             RowBox[{"weightfunction", "/@", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"#", "[", 
+                  RowBox[{"[", "4", "]"}], "]"}], "&"}], "/@", "database"}], 
+               ")"}]}], "\[Rule]", "database"}], "]"}]}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+            "index", ",", "title", ",", "expression", ",", "correctcounter", 
+             ",", "counter"}], "}"}], "=", "word"}], ";", 
+          "\[IndentingNewLine]", 
+          RowBox[{"wordcount", "++"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"Echo", "@", "expression"}], ";", "\[IndentingNewLine]", 
+          RowBox[{"CreateDialog", "[", 
+           RowBox[{"Column", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"TextCell", "[", 
+               RowBox[{"Style", "[", 
+                RowBox[{
+                 RowBox[{"word", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], ",", "fontsize"}], "]"}], 
+               "]"}], ",", 
+              RowBox[{"Row", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Button", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Style", "[", 
+                    RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+                    "\"\<WTF?\>\""}], ",", 
+                   RowBox[{
+                    RowBox[{"MapAt", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "4"}], "}"}]}], 
+                    "]"}], ";", 
+                    RowBox[{"database", "=", 
+                    RowBox[{"MapAt", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "5"}], "}"}]}], 
+                    "]"}]}], ";", 
+                    RowBox[{"DialogReturn", "[", 
+                    RowBox[{"algorithm", ";"}], "]"}]}]}], "]"}], ",", 
+                 RowBox[{
+                  RowBox[{"Button", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Style", "[", 
+                    RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+                    "\"\<Rubbish!\>\""}], ",", 
+                    RowBox[{"MapAt", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "4"}], "}"}]}], 
+                    "]"}]}], "]"}], ";", 
+                  RowBox[{"MapAt", "[", 
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "5"}], "}"}]}], 
+                   "]"}], ";", 
+                  RowBox[{"DialogReturn", "[", 
+                   RowBox[{"algorithm", ";"}], "]"}]}]}], "}"}], "]"}], ",", 
+              RowBox[{"Row", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"Button", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Style", "[", 
+                    RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+                    "\"\<WHAT'S THIS?\>\""}], ",", 
+                   RowBox[{"CreateDialog", "[", 
+                    RowBox[{"Column", "[", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"TextCell", "[", 
+                    RowBox[{"Echo", "@", "expression"}], "]"}], ",", 
+                    RowBox[{"DefaultButton", "[", "]"}]}], "}"}], "]"}], 
+                    "]"}]}], "]"}], ",", 
+                 RowBox[{"Button", "[", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"Style", "[", 
+                    RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+                    "\"\<GG\>\""}], ",", 
+                   RowBox[{"DialogReturn", "[", 
+                    RowBox[{"Print", "[", 
+                    RowBox[{"\"\<Today I used \>\"", "<>", 
+                    RowBox[{"ToString", "@", "wordcount"}], "<>", 
+                    "\"\< words to torment myself.\>\""}], "]"}], "]"}]}], 
+                  "]"}]}], "}"}], "]"}]}], "\[IndentingNewLine]", "\n", "}"}],
+             "]"}], "\n", "]"}]}]}], "\n", "]"}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"(*", 
+       RowBox[{"CreateDialog", "[", 
+        RowBox[{"Column", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"TextCell", "[", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Style", "[", 
+               RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+             "\"\<I am willing to learn words.\>\""}], "]"}], ",", 
+           RowBox[{"Row", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"Button", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Style", "[", 
+                   RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+                 "\"\<Go Fuck Yourself\>\""}], ",", 
+                RowBox[{"DialogReturn", "[", 
+                 RowBox[{
+                 "Print", "[", 
+                  "\"\<He quit, his obligation literally forgotten.\>\"", 
+                  "]"}], "]"}]}], "]"}], ",", 
+              RowBox[{"Button", "[", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{
+                  RowBox[{"Style", "[", 
+                   RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+                 "\"\<So I do.\>\""}], ",", 
+                RowBox[{"DialogReturn", "[", "algorithm", "]"}]}], "]"}]}], 
+             "}"}], "]"}]}], "}"}], "]"}], "]"}], "*)"}], "\n", 
+      "\[IndentingNewLine]", "algorithm"}]}], "\n", "]"}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.744791816875825*^9, 3.7447918405504227`*^9}, 
+   3.7447919009976707`*^9, 
+   3.74479194556367*^9},ExpressionUUID->"4fe76a75-a3e5-48e3-98e2-\
+a31618f5687c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"Tormentor", "[", 
+    RowBox[{"weightfunction_", ",", "fontsize_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"flag", "=", "1"}], ",", 
+       RowBox[{"expressionflag", "=", "0"}], ",", "database", ",", 
+       "algorithm", ",", "word", ",", 
+       RowBox[{"wordcount", "=", "0"}]}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"database", "=", 
+       RowBox[{"First", "@", 
+        RowBox[{"Import", "[", "\"\<database.xlsx\>\"", "]"}]}]}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"While", "[", 
+       RowBox[{
+        RowBox[{"flag", "\[Equal]", "1"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"word", "=", 
+          RowBox[{"RandomChoice", "[", 
+           RowBox[{
+            RowBox[{"weightfunction", "/@", 
+             RowBox[{"(", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"#", "[", 
+                 RowBox[{"[", "4", "]"}], "]"}], "&"}], "/@", "database"}], 
+              ")"}]}], "\[Rule]", "database"}], "]"}]}], ";", 
+         "\[IndentingNewLine]", 
+         RowBox[{"wordcount", "++"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"DialogInput", "[", "\[IndentingNewLine]", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"TextCell", "[", 
+             RowBox[{"Style", "[", 
+              RowBox[{
+               RowBox[{"word", "[", 
+                RowBox[{"[", "2", "]"}], "]"}], ",", "fontsize"}], "]"}], 
+             "]"}], ",", "\[IndentingNewLine]", "\t", 
+            RowBox[{"Button", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"Style", "[", 
+                 RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+               "\"\<WTF?\>\""}], ",", 
+              RowBox[{
+               RowBox[{"database", "=", 
+                RowBox[{"MapAt", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "4"}], "}"}]}], 
+                 "]"}]}], ";", 
+               RowBox[{"database", "=", 
+                RowBox[{"MapAt", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "5"}], "}"}]}], 
+                 "]"}]}], ";", 
+               RowBox[{"DialogReturn", "[", "]"}]}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Button", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"Style", "[", 
+                 RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+               "\"\<Rubbish!\>\""}], ",", 
+              RowBox[{
+               RowBox[{"database", "=", 
+                RowBox[{"MapAt", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "4"}], "}"}]}], 
+                 "]"}]}], ";", "\[IndentingNewLine]", "\t", 
+               RowBox[{"database", "=", 
+                RowBox[{"MapAt", "[", 
+                 RowBox[{
+                  RowBox[{
+                   RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                  RowBox[{"{", 
+                   RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "5"}], "}"}]}], 
+                 "]"}]}], ";", "\[IndentingNewLine]", "\t", 
+               RowBox[{"DialogReturn", "[", "]"}]}]}], "]"}], ",", 
+            "\[IndentingNewLine]", 
+            RowBox[{"Button", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"Style", "[", 
+                 RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+               "\"\<WHAT'S THIS?\>\""}], ",", "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"DialogReturn", "[", "]"}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"Button", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"Style", "[", 
+                 RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+               "\"\<GG\>\""}], ",", 
+              RowBox[{
+               RowBox[{"flag", "=", "0"}], ";", 
+               RowBox[{"DialogReturn", "[", "]"}], ";"}]}], "]"}]}], "}"}], 
+          "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{"expressionflag", "\[Equal]", "1"}], ",", 
+           RowBox[{
+            RowBox[{"DialogInput", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"TextCell", "[", 
+                RowBox[{
+                 RowBox[{"word", "[", 
+                  RowBox[{"[", "2", "]"}], "]"}], "<>", "\"\<:\>\""}], "]"}], 
+               ",", 
+               RowBox[{"TextCell", "[", 
+                RowBox[{"word", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "]"}], ",", 
+               "\[IndentingNewLine]", 
+               RowBox[{"Row", "[", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{"Button", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Style", "[", 
+                    RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+                    "\"\<WTF?\>\""}], ",", 
+                    RowBox[{
+                    RowBox[{"database", "=", 
+                    RowBox[{"MapAt", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "4"}], "}"}]}], 
+                    "]"}]}], ";", 
+                    RowBox[{"database", "=", 
+                    RowBox[{"MapAt", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "5"}], "}"}]}], 
+                    "]"}]}], ";", 
+                    RowBox[{"DialogReturn", "[", "]"}]}]}], "]"}], ",", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{"Button", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"Style", "[", 
+                    RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+                    "\"\<I fucking know!\>\""}], ",", 
+                    RowBox[{
+                    RowBox[{"database", "=", 
+                    RowBox[{"MapAt", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "4"}], "}"}]}], 
+                    "]"}]}], ";", "\[IndentingNewLine]", "\t", 
+                    RowBox[{"database", "=", 
+                    RowBox[{"MapAt", "[", 
+                    RowBox[{
+                    RowBox[{
+                    RowBox[{"#", "+", "1"}], "&"}], ",", "database", ",", 
+                    RowBox[{"{", 
+                    RowBox[{
+                    RowBox[{"word", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], ",", "5"}], "}"}]}], 
+                    "]"}]}], ";", "\[IndentingNewLine]", "\t", 
+                    RowBox[{"DialogReturn", "[", "]"}]}]}], "]"}]}], "}"}], 
+                 ",", 
+                 RowBox[{"Spacer", "[", "2", "]"}]}], "]"}]}], "}"}], "]"}], 
+            ";", 
+            RowBox[{"expressionflag", "=", "0"}]}]}], "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+      RowBox[{"Print", "[", 
+       RowBox[{"\"\<Today I used \>\"", "<>", 
+        RowBox[{"ToString", "@", "wordcount"}], "<>", 
+        "\"\< words to torment myself.\>\""}], "]"}], ";", 
+      "\[IndentingNewLine]", 
+      RowBox[{"Export", "[", 
+       RowBox[{"\"\<database.xlsx\>\"", ",", "database"}], "]"}]}]}], 
+    "\[IndentingNewLine]", 
+    RowBox[{"(*", 
+     RowBox[{"CreateDialog", "[", 
+      RowBox[{"Column", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"TextCell", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"Style", "[", 
+             RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+           "\"\<I am willing to learn words.\>\""}], "]"}], ",", 
+         RowBox[{"Row", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"Button", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"Style", "[", 
+                 RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+               "\"\<Go Fuck Yourself\>\""}], ",", 
+              RowBox[{"DialogReturn", "[", 
+               RowBox[{
+               "Print", "[", 
+                "\"\<He quit, his obligation literally forgotten.\>\"", "]"}],
+                "]"}]}], "]"}], ",", 
+            RowBox[{"Button", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+                RowBox[{"Style", "[", 
+                 RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+               "\"\<So I do.\>\""}], ",", 
+              RowBox[{"alogrithm", ";", 
+               RowBox[{"DialogReturn", "[", "]"}]}]}], "]"}]}], "}"}], 
+          "]"}]}], "}"}], "]"}], "]"}], "*)"}], "\[IndentingNewLine]", 
+    "]"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Tormentor", "[", 
+  RowBox[{"Exp", ",", "24"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.7447926427479906`*^9, 3.7447926427500057`*^9}, {
+   3.744792699892037*^9, 3.7447927640356073`*^9}, {3.7447927985094833`*^9, 
+   3.7447928893130217`*^9}, {3.7447929224296317`*^9, 
+   3.7447929807140408`*^9}, {3.7447930312250814`*^9, 3.7447930318806744`*^9}, 
+   3.744793074507897*^9, {3.7447931861220984`*^9, 3.744793195345353*^9}, {
+   3.744794372416284*^9, 3.7447944612745037`*^9}, 3.7447945140332932`*^9, {
+   3.7447945709665756`*^9, 3.7447945837050076`*^9}, {3.7447946137069206`*^9, 
+   3.74479474951385*^9}, {3.744794824506386*^9, 3.7447948310745597`*^9}, {
+   3.744794872184429*^9, 3.7447949179922543`*^9}, 3.7447950536657314`*^9, {
+   3.744795367389202*^9, 3.7447954470066037`*^9}, {3.744795490371587*^9, 
+   3.7447956301381807`*^9}, {3.7447957146599293`*^9, 3.744795729365225*^9}, 
+   3.74479578702011*^9, {3.7447958332485547`*^9, 3.7447958689085393`*^9}, {
+   3.74479594190005*^9, 3.7447959922496457`*^9}, {3.744796154659465*^9, 
+   3.7447961805149727`*^9}, 3.744796319212273*^9, {3.7447963512076607`*^9, 
+   3.744796353697652*^9}, {3.7447963843787203`*^9, 3.744796456235757*^9}, {
+   3.74479649744084*^9, 3.744796517816688*^9}, {3.744796553366624*^9, 
+   3.7447965655369434`*^9}, {3.7447968351483603`*^9, 
+   3.7447969083001137`*^9}, {3.744796951464834*^9, 
+   3.744797015847379*^9}},ExpressionUUID->"f5c5ef5c-e0fb-4d3e-959c-\
+5ccec6d4aa9d"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Import","nffil",
+   "\"File not found during \\!\\(\\*RowBox[{\\\"Import\\\"}]\\).\"",2,2,1,
+   17237948180602448015,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.7447970287259164`*^9},ExpressionUUID->"40565f97-add5-4cad-be60-\
+880c10c7bbf0"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "First","normal",
+   "\"Nonatomic expression expected at position \
+\\!\\(\\*RowBox[{\\\"1\\\"}]\\) in \\!\\(\\*RowBox[{\\\"First\\\", \\\"[\\\", \
+\\\"$Failed\\\", \\\"]\\\"}]\\).\"",2,2,2,17237948180602448015,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.744797028775962*^9},ExpressionUUID->"475e26cf-3164-437c-b340-\
+88322d6a9bc8"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partd",
+   "\"Part specification \\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"\
+\[LeftDoubleBracket]\\\", \\\"4\\\", \\\"\[RightDoubleBracket]\\\"}]\\) is \
+longer than depth of object.\"",2,2,3,17237948180602448015,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.7447970288139963`*^9},ExpressionUUID->"58d28280-a2a7-4a60-80f6-\
+c0ed79a109ea"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "RandomChoice","lrwl",
+   "\"The items for choice \\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"\[Rule]\\\", \
+RowBox[{\\\"First\\\", \\\"[\\\", \\\"$Failed\\\", \\\"]\\\"}]}]\\) should be \
+a list or a rule weights -> choices.\"",2,2,4,17237948180602448015,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.7447970288550334`*^9},ExpressionUUID->"af77772d-8d80-417f-9779-\
+8df3ae9bdb9a"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"2\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"RandomChoice\\\", \\\"[\\\", RowBox[{\\\"$Failed\\\", \\\
+\"\[Rule]\\\", RowBox[{\\\"First\\\", \\\"[\\\", \\\"$Failed\\\", \
+\\\"]\\\"}]}], \\\"]\\\"}]\\) does not exist.\"",2,2,5,17237948180602448015,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.7447970288880634`*^9},ExpressionUUID->"4063da1b-fcbd-44a9-a5e9-\
+6419fe27cb07"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partd",
+   "\"Part specification \\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"\
+\[LeftDoubleBracket]\\\", \\\"4\\\", \\\"\[RightDoubleBracket]\\\"}]\\) is \
+longer than depth of object.\"",2,2,6,17237948180602448015,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.74479703369639*^9},ExpressionUUID->"1364cc09-6409-42ee-9dff-705d64e843ab"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "RandomChoice","lrwl",
+   "\"The items for choice \\!\\(\\*RowBox[{\\\"$Failed\\\", \\\"\[Rule]\\\", \
+RowBox[{\\\"First\\\", \\\"[\\\", \\\"$Failed\\\", \\\"]\\\"}]}]\\) should be \
+a list or a rule weights -> choices.\"",2,2,7,17237948180602448015,"Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.744797033713393*^9},ExpressionUUID->"1f3ea248-c5b5-4df3-9293-\
+693f2333fc4b"],
+
+Cell[BoxData[
+ TemplateBox[{
+  "Part","partw",
+   "\"Part \\!\\(\\*RowBox[{\\\"2\\\"}]\\) of \
+\\!\\(\\*RowBox[{\\\"RandomChoice\\\", \\\"[\\\", RowBox[{\\\"$Failed\\\", \\\
+\"\[Rule]\\\", RowBox[{\\\"First\\\", \\\"[\\\", \\\"$Failed\\\", \
+\\\"]\\\"}]}], \\\"]\\\"}]\\) does not exist.\"",2,2,8,17237948180602448015,
+   "Local"},
+  "MessageTemplate"]], "Message", "MSG",
+ CellChangeTimes->{
+  3.7447970337264056`*^9},ExpressionUUID->"fbe5885e-8f14-49a1-a800-\
+80d579562231"],
+
+Cell[BoxData["\<\"Today I used 2 words to torment myself.\"\>"], "Print",
+ CellChangeTimes->{3.74479471361355*^9, 3.7447947971258345`*^9, 
+  3.7447948370419073`*^9, 3.744794895818673*^9, 3.744795642492262*^9, 
+  3.7447957757910237`*^9, 3.7447958772700644`*^9, 3.7447959633396425`*^9, 
+  3.744796010453995*^9, 3.7447964869634037`*^9, 3.7447965418552723`*^9, 
+  3.744797035818287*^9},ExpressionUUID->"1cab4b9a-c6a8-4851-948a-\
+59e97e32c6ae"],
+
+Cell[BoxData["\<\"database.xlsx\"\>"], "Output",
+ CellChangeTimes->{3.7447964872236414`*^9, 3.7447965421235247`*^9, 
+  3.7447970370754323`*^9},ExpressionUUID->"0ca202d0-d19e-464f-aadf-\
+8807d73eb57e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Tormentor", "[", 
+  RowBox[{"Exp", ",", "24"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7447926582479124`*^9, 
+  3.744792677831751*^9}},ExpressionUUID->"17d57cf3-6434-4a6c-897a-\
+c93031441ba2"],
+
+Cell[BoxData[
+ TemplateBox[{FrontEndObject[
+    LinkObject["qxmyb_shm", 3, 1]],41,
+   "FrontEndObject[LinkObject[\"qxmyb_shm\", 3, 1]]","41","41"},
+  "NotebookObjectUnsaved"]], "Output",
+ CellChangeTimes->{{3.7447926610285044`*^9, 
+  3.744792678563409*^9}},ExpressionUUID->"fc8c987a-95c6-4b12-85c7-\
+d59a10d41b8d"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"algorithm", "[", 
+    RowBox[{"data_", ",", "wordcount_", ",", "fontsize_"}], "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", "word", "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"word", "=", 
+       RowBox[{"RandomChoice", "[", 
+        RowBox[{
+         RowBox[{"Exp", "/@", 
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#", "[", 
+              RowBox[{"[", "4", "]"}], "]"}], "&"}], "/@", "data"}], ")"}]}], 
+         "\[Rule]", "data"}], "]"}]}], ";", "\[IndentingNewLine]", 
+      RowBox[{"CreateDialog", "[", "\[IndentingNewLine]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"TextCell", "[", 
+          RowBox[{"Style", "[", 
+           RowBox[{
+            RowBox[{"word", "[", 
+             RowBox[{"[", "2", "]"}], "]"}], ",", "fontsize"}], "]"}], "]"}], 
+         ",", "\[IndentingNewLine]", "\t", 
+         RowBox[{"Button", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Style", "[", 
+              RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+            "\"\<WTF?\>\""}], ",", 
+           RowBox[{
+            RowBox[{"MapAt", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "+", "1"}], "&"}], ",", "data", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"word", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], ",", "4"}], "}"}]}], "]"}], 
+            ";", 
+            RowBox[{"data", "=", 
+             RowBox[{"MapAt", "[", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"#", "+", "1"}], "&"}], ",", 
+               RowBox[{"Echo", "@", "data"}], ",", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"word", "[", 
+                  RowBox[{"[", "1", "]"}], "]"}], ",", "5"}], "}"}]}], 
+              "]"}]}], ";", 
+            RowBox[{"DialogReturn", "[", "algorithm", "]"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Button", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Style", "[", 
+              RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+            "\"\<Rubbish!\>\""}], ",", 
+           RowBox[{
+            RowBox[{"MapAt", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "+", "1"}], "&"}], ",", "data", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"word", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], ",", "4"}], "}"}]}], "]"}], 
+            ";", "\[IndentingNewLine]", "\t", 
+            RowBox[{"MapAt", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"#", "+", "1"}], "&"}], ",", "data", ",", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"word", "[", 
+                 RowBox[{"[", "1", "]"}], "]"}], ",", "5"}], "}"}]}], "]"}], 
+            ";", "\[IndentingNewLine]", "\t", 
+            RowBox[{"DialogReturn", "[", "algorithm", "]"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"Button", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Style", "[", 
+              RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+            "\"\<WHAT'S THIS?\>\""}], ",", 
+           RowBox[{"CreateDialog", "[", 
+            RowBox[{"Column", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"TextCell", "[", 
+                RowBox[{"word", "[", 
+                 RowBox[{"[", "3", "]"}], "]"}], "]"}], ",", 
+               RowBox[{"DefaultButton", "[", "]"}]}], "}"}], "]"}], "]"}]}], 
+          "]"}], ",", 
+         RowBox[{"Button", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+             RowBox[{"Style", "[", 
+              RowBox[{"#", ",", "fontsize"}], "]"}], "&"}], "@", 
+            "\"\<GG\>\""}], ",", 
+           RowBox[{"DialogReturn", "[", 
+            RowBox[{"Print", "[", 
+             RowBox[{"\"\<Today I used \>\"", "<>", 
+              RowBox[{"ToString", "@", "wordcount"}], "<>", 
+              "\"\< words to torment myself.\>\""}], "]"}], "]"}]}], "]"}]}], 
+        "}"}], "]"}]}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"database", "=", 
+   RowBox[{"First", "@", 
+    RowBox[{"Import", "[", "\"\<database.xlsx\>\"", "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"i", "=", "1"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{"algorithm", "[", 
+  RowBox[{"database", ",", "i", ",", "20"}], 
+  "]"}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.7447932054104156`*^9, 3.7447932592641616`*^9}, {
+  3.7447933277992163`*^9, 3.7447933634037075`*^9}, {3.744793398016733*^9, 
+  3.7447934394681015`*^9}},ExpressionUUID->"a6158d36-290c-4e43-ae7f-\
+6cd7b1f4769c"],
+
+Cell[BoxData[
+ TemplateBox[{FrontEndObject[
+    LinkObject["qxmyb_shm", 3, 1]],65,
+   "FrontEndObject[LinkObject[\"qxmyb_shm\", 3, 1]]","65","65"},
+  "NotebookObjectUnsaved"]], "Output",
+ CellChangeTimes->{
+  3.744793364818974*^9, {3.7447934124426937`*^9, 
+   3.7447934405550847`*^9}},ExpressionUUID->"e0410e4a-8f55-41d3-98a6-\
+8bcb537ba76c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Directory", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7447933022932215`*^9, 
+  3.744793303803578*^9}},ExpressionUUID->"edbb2e47-dd2e-422a-aa5e-\
+f33274db0d88"],
+
+Cell[BoxData["\<\"F:\\\\GitHub\\\\Mathematica-Files\\\\GRE\"\>"], "Output",
+ CellChangeTimes->{
+  3.744793304090836*^9},ExpressionUUID->"8be99135-7232-407c-99a3-\
+6237252b17d8"]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"algorithm", "["}]], "Input",
+ CellChangeTimes->{{3.744793262610162*^9, 
+  3.7447932654080935`*^9}},ExpressionUUID->"a5b24b93-9748-4ea0-ace1-\
+d2969d78b12a"],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{
+  3.7447938902508497`*^9},ExpressionUUID->"bea285ff-6a40-4cef-9d06-\
+c45cef4e4192"],
+
+Cell[BoxData[
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"CreateDialog", "[", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"TextCell", "[", "\"\<test\>\"", "]"}], ",", 
+      RowBox[{"DefaultButton", "[", 
+       RowBox[{"DialogReturn", "[", "]"}], "]"}]}], "}"}], "]"}], ",", "5"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.74479417225309*^9, 
+  3.7447942308239803`*^9}},ExpressionUUID->"5396051a-6543-40ca-b855-\
+dd79493401c5"],
+
+Cell[BoxData[
+ RowBox[{"Do", "[", 
+  RowBox[{
+   RowBox[{"DialogInput", "[", 
+    RowBox[{"Column", "[", 
+     RowBox[{"{", 
+      RowBox[{"\"\<Do you want to continue?\>\"", ",", 
+       RowBox[{"Row", "[", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"CancelButton", "[", 
+           RowBox[{"DialogReturn", "[", "\"\<No\>\"", "]"}], "]"}], ",", 
+          RowBox[{"DefaultButton", "[", 
+           RowBox[{"DialogReturn", "[", "\"\<Yes\>\"", "]"}], "]"}]}], "}"}], 
+        "]"}]}], "}"}], "]"}], "]"}], ",", "5"}], "]"}]], "Input",
+ CellChangeTimes->{{3.7447942816698074`*^9, 
+  3.7447942851499157`*^9}},ExpressionUUID->"1addeac0-e54b-4e6d-b52b-\
+737b7f4619af"]
+},
+WindowSize->{2544, 1264},
+WindowMargins->{{-8, Automatic}, {-16, Automatic}},
+Magnification:>2.5 Inherited,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 7644, 184, 1224, "Input",ExpressionUUID->"4fe76a75-a3e5-48e3-98e2-a31618f5687c"],
+Cell[CellGroupData[{
+Cell[8227, 208, 11806, 274, 1512, "Input",ExpressionUUID->"f5c5ef5c-e0fb-4d3e-959c-5ccec6d4aa9d"],
+Cell[20036, 484, 303, 8, 56, "Message",ExpressionUUID->"40565f97-add5-4cad-be60-880c10c7bbf0"],
+Cell[20342, 494, 394, 9, 56, "Message",ExpressionUUID->"475e26cf-3164-437c-b340-88322d6a9bc8"],
+Cell[20739, 505, 402, 9, 56, "Message",ExpressionUUID->"58d28280-a2a7-4a60-80f6-c0ed79a109ea"],
+Cell[21144, 516, 435, 9, 56, "Message",ExpressionUUID->"af77772d-8d80-417f-9779-8df3ae9bdb9a"],
+Cell[21582, 527, 476, 11, 56, "Message",ExpressionUUID->"4063da1b-fcbd-44a9-a5e9-6419fe27cb07"],
+Cell[22061, 540, 397, 8, 56, "Message",ExpressionUUID->"1364cc09-6409-42ee-9dff-705d64e843ab"],
+Cell[22461, 550, 433, 9, 56, "Message",ExpressionUUID->"1f3ea248-c5b5-4df3-9293-693f2333fc4b"],
+Cell[22897, 561, 476, 11, 56, "Message",ExpressionUUID->"fbe5885e-8f14-49a1-a800-80d579562231"],
+Cell[23376, 574, 439, 6, 56, "Print",ExpressionUUID->"1cab4b9a-c6a8-4851-948a-59e97e32c6ae"],
+Cell[23818, 582, 200, 3, 112, "Output",ExpressionUUID->"0ca202d0-d19e-464f-aadf-8807d73eb57e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24055, 590, 216, 5, 71, "Input",ExpressionUUID->"17d57cf3-6434-4a6c-897a-c93031441ba2"],
+Cell[24274, 597, 314, 7, 113, "Output",ExpressionUUID->"fc8c987a-95c6-4b12-85c7-d59a10d41b8d"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[24625, 609, 4928, 129, 888, "Input",ExpressionUUID->"a6158d36-290c-4e43-ae7f-6cd7b1f4769c"],
+Cell[29556, 740, 342, 8, 113, "Output",ExpressionUUID->"e0410e4a-8f55-41d3-98a6-8bcb537ba76c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29935, 753, 185, 4, 71, "Input",ExpressionUUID->"edbb2e47-dd2e-422a-aa5e-f33274db0d88"],
+Cell[30123, 759, 177, 3, 280, "Output",ExpressionUUID->"8be99135-7232-407c-99a3-6237252b17d8"]
+}, Open  ]],
+Cell[30315, 765, 180, 4, 175, "Input",ExpressionUUID->"a5b24b93-9748-4ea0-ace1-d2969d78b12a"],
+Cell[30498, 771, 130, 3, 175, "Input",ExpressionUUID->"bea285ff-6a40-4cef-9d06-c45cef4e4192"],
+Cell[30631, 776, 432, 12, 255, "Input",ExpressionUUID->"5396051a-6543-40ca-b855-dd79493401c5"],
+Cell[31066, 790, 679, 17, 380, "Input",ExpressionUUID->"1addeac0-e54b-4e6d-b52b-737b7f4619af"]
+}
+]
+*)
+

@@ -1,0 +1,28 @@
+Input type:         Mean                
+Basic sets type:    Polynomial         
+Basic sets cut:     3                   
+Hamiltonian:        Plus[Power[p, 2], Power[x, 2]]
+Initial A:          List[List[1, 0], List[0, 1]]
+Initial B:          List[0, 0]          
+variable:           {{x, p}}            
+Time interval:      0.01                   
+Time Goal:          1                  
+QHD grade:          3                   
+Integration Cut:    6                   
+
+1:                  1
+p:                  1
+p^2:              1  
+p^3:              1  
+x:                  0
+p*x:                0
+p^2*x:            0
+p^3*x:             0 
+x^2:                1
+p*x^2:             1 
+p^2*x^2:           2 
+p^3*x^2:           3
+x^3:                0
+p*x^3:              0
+p^2*x^3:            0
+p^3*x^3:            0

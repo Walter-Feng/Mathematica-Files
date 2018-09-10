@@ -1,0 +1,92 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.2' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      2765,         84]
+NotebookOptionsPosition[      2215,         66]
+NotebookOutlinePosition[      2594,         82]
+CellTagsIndexPosition[      2551,         79]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"<<", "\"\<Tormentor.wl\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"DatabaseFormatize", "[", "\"\<GRE3000Template.xlsx\>\"", "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Initializer", "[", "\"\<formatizedGRE3000Template.xlsx\>\"", "]"}],
+   ";"}]}], "Input",
+ CellChangeTimes->{{3.745048361631221*^9, 3.745048361820391*^9}, {
+  3.7450492245876727`*^9, 
+  3.745049261231496*^9}},ExpressionUUID->"52dbe284-b85b-4106-8701-\
+9cc374b1b20c"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"SetDirectory", "[", 
+   RowBox[{"NotebookDirectory", "[", "]"}], "]"}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"<<", "\"\<Tormentor.wl\>\""}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Tormentor", "[", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"10", "^", "#"}], "&"}], ",", "30"}], "]"}], ";"}]}], "Input",
+ CellChangeTimes->{{3.744800122202046*^9, 3.744800196347229*^9}, 
+   3.7448035375167303`*^9, {3.745049268336504*^9, 3.745049276529453*^9}, {
+   3.7450589719067307`*^9, 
+   3.745058972041854*^9}},ExpressionUUID->"2e4c883d-98c6-49ce-8131-\
+a60fcbbd9b2f"],
+
+Cell[BoxData["\<\"Today I used 36 words to torment myself.\"\>"], "Print",
+ CellChangeTimes->{3.74480058603711*^9, 3.744803689640032*^9, 
+  3.7449355722502317`*^9, 3.74498106397393*^9, 3.745049470259476*^9, 
+  3.7450495477859025`*^9, 3.7450497506441145`*^9, 3.7450589659364495`*^9, 
+  3.7450596257608557`*^9},ExpressionUUID->"464bd0e1-7db3-4de0-a34a-\
+b9d0347a78cc"]
+}, Open  ]]
+},
+WindowSize->{2560, 1357},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>2.6 Inherited,
+FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 630, 16, 257, "Input",ExpressionUUID->"52dbe284-b85b-4106-8701-9cc374b1b20c"],
+Cell[CellGroupData[{
+Cell[1213, 40, 617, 16, 207, "Input",ExpressionUUID->"2e4c883d-98c6-49ce-8131-a60fcbbd9b2f"],
+Cell[1833, 58, 366, 5, 57, "Print",ExpressionUUID->"464bd0e1-7db3-4de0-a34a-b9d0347a78cc"]
+}, Open  ]]
+}
+]
+*)
+
