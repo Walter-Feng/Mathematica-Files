@@ -220,6 +220,71 @@ Close[fileoperator];
 
 ];
 
+CoefficientPolynomialQHD[Hamiltonian_,InitialA_,InitialB_,Coefficient_,variable_,timeinterval_,timegoal_,grade_,Integradeend_,maxstringlength_,outputfile_]:=
+Module[{fileoperator,MoyalBracketList,PolynomialList,Normalizer,Tuner,TunedMeanList,VarianceList,TemporaryCoefficientList,TemporaryA,TemporaryB,EquationList,TunerList,UnitaryTransformation,Polynomialfunction,coefficient,equationlist,CoefficientResult,timecounter=0,MeanChangeList,coefficientlist,polynomialfunction,tempseries,coefficients,result},
+Tuner[polynomialfunction_]:=If[MatchQ[polynomialfunction/.{Times->List,Power->List},_List],Times@@(ParallelMap[1/#!&,Cases[Flatten[polynomialfunction/.{Times->List,Power->List}],_Integer]]),1];
+
+fileoperator = OpenWrite[outputfile];
+
+PolynomialList=Sort@DeleteDuplicates[Times@@@Subsets[Flatten[Table[variable,grade]]]];
+TunerList=Tuner/@PolynomialList;
+PolynomialList=TunerList*PolynomialList;
+
+MoyalBracketList=ParallelMap[MoyalBracket[#,Hamiltonian,variable,grade]&,PolynomialList];
+
+TemporaryA=InitialA;
+TemporaryB=InitialB;
+
+
+
+coefficientlist=Table[tempseries[q],{q,Length[PolynomialList]}];
+
+polynomialfunction=coefficientlist.PolynomialList;
+
+
+result=Solve[ParallelMap[GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,polynomialfunction*#,Integradeend]&,PolynomialList]==TunedMeanList,coefficientlist];
+   
+TemporaryCoefficientList=Flatten[Table[tempseries[q],{q,Length[PolynomialList]}]/.result];
+
+Normalizer=1/GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,TemporaryCoefficientList.PolynomialList,Integradeend];
+
+
+WriteString[fileoperator,
+  "Initial Status:"<>"\n"<>
+  StringJoin@@(QHDFormat[#,maxstringlength]&/@(Transpose@{ToString[#,InputForm]&/@PolynomialList,ToString[#,InputForm]&/@TemporaryCoefficientList}))<>"\n"<>"Mean:"<>"\n"<>StringJoin@@(QHDFormat[#,maxstringlength]&/@(Transpose@{ToString[#,InputForm]&/@PolynomialList,ToString[#,InputForm]&/@TunedMeanList}))<>"\n"
+];
+
+
+While[timecounter<=timegoal,
+timecounter+=timeinterval;
+
+MeanChangeList=timeinterval*ParallelMap[GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,Normalizer*(TemporaryCoefficientList.PolynomialList)*#,Integradeend]&, MoyalBracketList];
+TunedMeanList+=MeanChangeList;
+
+coefficientlist=Table[tempseries[q],{q,Length[PolynomialList]}];
+polynomialfunction=coefficientlist.PolynomialList;
+
+equations=ParallelMap[GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,Normalizer*polynomialfunction*#,Integradeend]&,PolynomialList];
+
+
+TemporaryCoefficientList=Flatten[Table[tempseries[q],{q,Length[PolynomialList]}]/.result];
+
+
+Normalizer=1/GaussianIntegrate[Flatten[variable],TemporaryA,TemporaryB,TemporaryCoefficientList.PolynomialList,Integradeend];
+
+WriteString[fileoperator,
+  QHDFormat[{"t:",ToString@timecounter},maxstringlength]<>
+  StringJoin@@(QHDFormat[#,maxstringlength]&/@(Transpose@{ToString[#,InputForm]&/@PolynomialList,ToString[#,InputForm]&/@TemporaryCoefficientList}))<>"\n"<>"Mean:"<>"\n"<>StringJoin@@(QHDFormat[#,maxstringlength]&/@(Transpose@{ToString[#,InputForm]&/@PolynomialList,ToString[#,InputForm]&/@TunedMeanList}))<>"\n"
+];
+  ];
+
+
+Close[fileoperator];
+
+];
+
+
+
 
 IntegratedQHD[inputfilename_,outputfilename_] := Module[{Parameters,Coefficients,inputtype,basicssets,basicsetscut,hamiltonian,initalA,initialB,meanlist,variable,timeinterval,timegoal,grade,integradeend},
 	
