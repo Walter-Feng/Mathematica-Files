@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[      2765,         84]
-NotebookOptionsPosition[      2215,         66]
-NotebookOutlinePosition[      2594,         82]
-CellTagsIndexPosition[      2551,         79]
+NotebookDataLength[      3203,         94]
+NotebookOptionsPosition[      2553,         74]
+NotebookOutlinePosition[      2940,         91]
+CellTagsIndexPosition[      2897,         88]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -52,22 +52,31 @@ Cell[BoxData[{
      RowBox[{"10", "^", "#"}], "&"}], ",", "30"}], "]"}], ";"}]}], "Input",
  CellChangeTimes->{{3.744800122202046*^9, 3.744800196347229*^9}, 
    3.7448035375167303`*^9, {3.745049268336504*^9, 3.745049276529453*^9}, {
-   3.7450589719067307`*^9, 
-   3.745058972041854*^9}},ExpressionUUID->"2e4c883d-98c6-49ce-8131-\
-a60fcbbd9b2f"],
+   3.7450589719067307`*^9, 3.745058972041854*^9}, 3.746426752707507*^9, 
+   3.7464269049667997`*^9},
+ CellLabel->"In[11]:=",ExpressionUUID->"2e4c883d-98c6-49ce-8131-a60fcbbd9b2f"],
 
-Cell[BoxData["\<\"Today I used 36 words to torment myself.\"\>"], "Print",
+Cell[BoxData["\<\"Today I used 3 words to torment myself.\"\>"], "Print",
  CellChangeTimes->{3.74480058603711*^9, 3.744803689640032*^9, 
   3.7449355722502317`*^9, 3.74498106397393*^9, 3.745049470259476*^9, 
   3.7450495477859025`*^9, 3.7450497506441145`*^9, 3.7450589659364495`*^9, 
-  3.7450596257608557`*^9},ExpressionUUID->"464bd0e1-7db3-4de0-a34a-\
-b9d0347a78cc"]
-}, Open  ]]
+  3.7450596257608557`*^9, 3.74642674889424*^9, 3.746426903449822*^9, 
+  3.746446745052726*^9},
+ CellLabel->
+  "During evaluation of \
+In[11]:=",ExpressionUUID->"e14fc155-ff15-41c3-b437-e4aa4d073190"]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.746422517477738*^9, 
+  3.746422517922578*^9}},ExpressionUUID->"bbbc7e9e-749c-45af-8da2-\
+7ad779f2358a"]
 },
-WindowSize->{2560, 1357},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+WindowSize->{1280, 751},
+WindowMargins->{{15, Automatic}, {-154, Automatic}},
 Magnification:>2.6 Inherited,
-FrontEndVersion->"11.2 for Microsoft Windows (64-bit) (September 10, 2017)",
+FrontEndVersion->"11.3 for Mac OS X x86 (32-bit, 64-bit Kernel) (March 5, \
+2018)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -81,11 +90,12 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 630, 16, 257, "Input",ExpressionUUID->"52dbe284-b85b-4106-8701-9cc374b1b20c"],
+Cell[558, 20, 630, 16, 240, "Input",ExpressionUUID->"52dbe284-b85b-4106-8701-9cc374b1b20c"],
 Cell[CellGroupData[{
-Cell[1213, 40, 617, 16, 207, "Input",ExpressionUUID->"2e4c883d-98c6-49ce-8131-a60fcbbd9b2f"],
-Cell[1833, 58, 366, 5, 57, "Print",ExpressionUUID->"464bd0e1-7db3-4de0-a34a-b9d0347a78cc"]
-}, Open  ]]
+Cell[1213, 40, 685, 16, 215, "Input",ExpressionUUID->"2e4c883d-98c6-49ce-8131-a60fcbbd9b2f"],
+Cell[1901, 58, 481, 8, 60, "Print",ExpressionUUID->"e14fc155-ff15-41c3-b437-e4aa4d073190"]
+}, Open  ]],
+Cell[2397, 69, 152, 3, 77, "Input",ExpressionUUID->"bbbc7e9e-749c-45af-8da2-7ad779f2358a"]
 }
 ]
 *)
