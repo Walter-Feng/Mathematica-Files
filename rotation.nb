@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    114847,       2554]
-NotebookOptionsPosition[    108999,       2451]
-NotebookOutlinePosition[    109361,       2467]
-CellTagsIndexPosition[    109318,       2464]
+NotebookDataLength[    141659,       3089]
+NotebookOptionsPosition[    135026,       2973]
+NotebookOutlinePosition[    135393,       2989]
+CellTagsIndexPosition[    135350,       2986]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -25,6 +25,15 @@ Cell[BoxData[
   ";"}]], "Input",
  CellChangeTimes->{{3.768012346566428*^9, 3.768012354628108*^9}},
  CellLabel->"In[37]:=",ExpressionUUID->"6ed009b2-0620-4635-b1f4-d0d6735d8a5a"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+  "SetDirectory", "[", 
+   "\"\<C:\\\\Users\\\\70967\\\\Documents\\\\Ferrocene\>\"", "]"}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.7692542014512024`*^9, 3.7692542337698145`*^9}},
+ CellLabel->"In[28]:=",ExpressionUUID->"2fa418d0-8388-4294-bc99-d66614a846b3"],
 
 Cell[BoxData[
  RowBox[{
@@ -216,7 +225,6 @@ Cell[BoxData[{
               RowBox[{"#", ",", "CForm"}], "]"}], "&"}], ",", 
             RowBox[{
              RowBox[{"StructureExtractor", "[", "fchkfilestring", "]"}], "[", 
-             
              RowBox[{"[", "2", "]"}], "]"}], ",", 
             RowBox[{"{", "2", "}"}]}], "]"}]}], "}"}], "]"}]}]}], ",", 
      "\"\<\\n\>\""}], "]"}]}], ";"}], "\n", 
@@ -246,7 +254,7 @@ Cell[BoxData[{
        RowBox[{"Map", "[", 
         RowBox[{
          RowBox[{
-          RowBox[{"#", "/", "0.529177210903"}], "&"}], ",", "coordinatelist", 
+          RowBox[{"#", "*", "0.529177210903"}], "&"}], ",", "coordinatelist", 
          ",", 
          RowBox[{"{", "3", "}"}]}], "]"}]}]}], ",", "\"\<\\n\>\""}], "]"}]}], 
   ";"}], "\n", 
@@ -326,39 +334,26 @@ Cell[BoxData[{
                 RowBox[{
                  RowBox[{
                   RowBox[{"StringTake", "[", 
-                   RowBox[{
-                    RowBox[{"fchk", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], ",", "#"}], "]"}], "&"}], 
-                 "/@", 
+                   RowBox[{"fchkfilestring", ",", "#"}], "]"}], "&"}], "/@", 
                  RowBox[{"Sector", "[", 
                   RowBox[{
                    RowBox[{"Transpose", "[", 
                     RowBox[{"Join", "[", 
                     RowBox[{
                     RowBox[{"StringPosition", "[", 
-                    RowBox[{
-                    RowBox[{"fchk", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<MxBond\>\""}], 
-                    "]"}], ",", 
+                    RowBox[{"fchkfilestring", ",", "\"\<MxBond\>\""}], "]"}], 
+                    ",", 
                     RowBox[{"StringPosition", "[", 
-                    RowBox[{
-                    RowBox[{"fchk", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<NBond\>\""}], 
-                    "]"}], ",", 
+                    RowBox[{"fchkfilestring", ",", "\"\<NBond\>\""}], "]"}], 
+                    ",", 
                     RowBox[{"StringPosition", "[", 
-                    RowBox[{
-                    RowBox[{"fchk", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<IBond\>\""}], 
-                    "]"}], ",", 
+                    RowBox[{"fchkfilestring", ",", "\"\<IBond\>\""}], "]"}], 
+                    ",", 
                     RowBox[{"StringPosition", "[", 
-                    RowBox[{
-                    RowBox[{"fchk", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<RBond\>\""}], 
-                    "]"}], ",", 
+                    RowBox[{"fchkfilestring", ",", "\"\<RBond\>\""}], "]"}], 
+                    ",", 
                     RowBox[{"StringPosition", "[", 
-                    RowBox[{
-                    RowBox[{"fchk", "[", 
-                    RowBox[{"[", "1", "]"}], "]"}], ",", "\"\<Virial\>\""}], 
+                    RowBox[{"fchkfilestring", ",", "\"\<Virial\>\""}], 
                     "]"}]}], "]"}], "]"}], "[", 
                    RowBox[{"[", "2", "]"}], "]"}], "]"}]}], ")"}]}], ",", 
               RowBox[{"{", "2", "}"}]}], "]"}]}], ")"}]}]}], "]"}]}], ";", 
@@ -399,7 +394,7 @@ mcscf,dft\n\nmol = gto.Mole()\nmol.build(\n# verbose = 4,\nsymmetry = False,\n\
 atom =\n'''\n\>\"", "<>", 
     RowBox[{"CoordinateToString", "[", "coordinatelist", "]"}], "<>", 
     "\[IndentingNewLine]", "\"\<\\n'''\n,\nbasis='\>\"", "<>", "basis", "<>", 
-    "\"\<'\n\n)\nmf.kernel()\n\nmf.analyze()\n\>\""}]}], 
+    "\"\<'\n\n)\nmf = scf.RHF(mol)\nmf.kernel()\n\nmf.analyze()\n\>\""}]}], 
   "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{"PyscfScriptGeneratorDFT", "[", 
@@ -531,8 +526,11 @@ results:  \\\", t12)\n\>\""}]}], "\[IndentingNewLine]", "]"}]}],
    3.768126192352418*^9, {3.7686391729512777`*^9, 3.7686391732753897`*^9}, 
    3.769224157065462*^9, {3.7692244114008827`*^9, 3.769224451176428*^9}, {
    3.76924596005414*^9, 3.769245965371801*^9}, {3.769246064644753*^9, 
-   3.769246084384227*^9}, {3.769246128648098*^9, 3.769246138635647*^9}},
- CellLabel->"In[68]:=",ExpressionUUID->"e760281f-07b2-4614-9382-911c940e10b0"],
+   3.769246084384227*^9}, {3.769246128648098*^9, 3.769246138635647*^9}, {
+   3.769254033115886*^9, 3.7692540334001718`*^9}, {3.7692543565136857`*^9, 
+   3.769254372111988*^9}, {3.7692545749862633`*^9, 
+   3.7692546119325333`*^9}},ExpressionUUID->"e760281f-07b2-4614-9382-\
+911c940e10b0"],
 
 Cell[CellGroupData[{
 
@@ -1053,113 +1051,117 @@ Cell[BoxData[
   RowBox[{
    RowBox[{"fchkMolecule", "[", 
     RowBox[{"fchk", "[", 
-     RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", 
-   RowBox[{"PlotTheme", "\[Rule]", "\"\<BallAndStick\>\""}]}], "]"}]], "Input",\
-
+     RowBox[{"[", "5", "]"}], "]"}], "]"}], ",", 
+   RowBox[{"PlotTheme", "\[Rule]", "\"\<BallAndStick\>\""}]}], "]"}]], "Input",
  CellChangeTimes->{{3.768636918342408*^9, 3.768636923915313*^9}, {
   3.76863721887502*^9, 3.7686372230001583`*^9}, {3.7686380972099133`*^9, 
   3.768638188202709*^9}, {3.768638350066269*^9, 3.768638404201991*^9}, {
-  3.768638644974681*^9, 3.7686386498497877`*^9}},
- CellLabel->"In[40]:=",ExpressionUUID->"2f195a93-d311-4b7b-af66-1df31f0e31dd"],
+  3.768638644974681*^9, 3.7686386498497877`*^9}, {3.76925448852446*^9, 
+  3.769254525134531*^9}},
+ CellLabel->"In[61]:=",ExpressionUUID->"2f195a93-d311-4b7b-af66-1df31f0e31dd"],
 
 Cell[BoxData[
  TemplateBox[{
   "Molecule","valenc",
    "\"Invalid valence for \
 \\!\\(\\*RowBox[{\\\"\\\\\\\"carbon\\\\\\\"\\\"}]\\) atom at position \
-\\!\\(\\*RowBox[{\\\"1\\\"}]\\).\"",2,40,15,24447516803355850835,"Local"},
+\\!\\(\\*RowBox[{\\\"1\\\"}]\\).\"",2,61,10,22977923065865793297,"Local"},
   "MessageTemplate"]], "Message", "MSG",
  CellChangeTimes->{
   3.768638061542481*^9, {3.76863809869613*^9, 3.7686381895005417`*^9}, {
-   3.768638352596364*^9, 3.768638405569312*^9}, 3.768638651127631*^9},
+   3.768638352596364*^9, 3.768638405569312*^9}, 3.768638651127631*^9, {
+   3.769254463838453*^9, 3.769254526310417*^9}},
  CellLabel->
   "During evaluation of \
-In[40]:=",ExpressionUUID->"fd44e459-304f-4d03-a2c6-4a9f5ff94558"],
+In[61]:=",ExpressionUUID->"322c5486-658d-4139-b790-f54bd0bfe487"],
 
 Cell[BoxData[
  Graphics3DBox[
   {EdgeForm[None], Specularity[
     GrayLevel[1], 100], GraphicsComplex3DBox[CompressedData["
-1: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
-
+1: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
     "], {{
       {RGBColor[0.4, 0.4, 0.4], 
        SphereBox[{1, 2, 3, 4, 5, 12, 13, 14, 16, 18, 21, 23}, 0.34]}, 
       {RGBColor[0.878431, 0.4, 0.2], SphereBox[{11}, 0.41]}, 
       {RGBColor[0.65, 0.7, 0.7], 
-       SphereBox[{6, 7, 8, 9, 10, 15, 17, 19, 20, 24, 25, 26}, 0.24]}, 
+       SphereBox[{6, 7, 8, 9, 10, 15, 17, 19, 20, 24, 25, 26, 27, 28, 29, 30},
+         0.24]}, 
       {RGBColor[0.800498, 0.201504, 0.192061], 
        SphereBox[{22}, 0.31000000000000005`]}}, {
       {RGBColor[0.4, 0.4, 0.4], 
-       CylinderBox[{{27, 28}, {29, 30}, {31, 32}, {33, 34}, {36, 37}, {38, 
-        39}, {41, 42}, {43, 44}, {46, 47}, {48, 49}, {52, 53}, {54, 55}, {56, 
-        57}, {58, 59}, {61, 62}, {63, 64}, {66, 67}, {68, 69}, {71, 72}, {73, 
-        74}, {78, 76}, {80, 77}}, 0.08], 
-       CylinderBox[{{1, 35}, {2, 40}, {3, 45}, {4, 50}, {5, 51}, {12, 60}, {
-        13, 65}, {14, 70}, {16, 21}, {18, 75}, {21, 23}, {23, 82}, {23, 83}, {
-        23, 84}}, 0.15]}, 
+       CylinderBox[{{30, 31}, {32, 33}, {34, 35}, {36, 37}, {39, 40}, {41, 
+        42}, {44, 45}, {46, 47}, {49, 50}, {51, 52}, {55, 56}, {57, 58}, {59, 
+        60}, {61, 62}, {64, 65}, {66, 67}, {69, 70}, {71, 72}, {74, 75}, {76, 
+        77}, {81, 79}, {83, 80}}, 0.08], 
+       CylinderBox[{{1, 38}, {2, 43}, {3, 48}, {4, 53}, {5, 54}, {12, 63}, {
+        13, 68}, {14, 73}, {16, 21}, {18, 78}, {21, 23}, {23, 85}, {23, 86}, {
+        23, 87}}, 0.15]}, 
       {RGBColor[0.65, 0.7, 0.7], 
-       CylinderBox[{{35, 6}, {40, 7}, {45, 8}, {50, 9}, {51, 10}, {60, 15}, {
-        65, 17}, {70, 19}, {75, 20}, {82, 24}, {83, 25}, {84, 26}}, 0.15]}, 
+       CylinderBox[{{27, 30}, {28, 30}, {38, 6}, {43, 7}, {48, 8}, {53, 9}, {
+        54, 10}, {63, 15}, {68, 17}, {73, 19}, {78, 20}, {85, 24}, {86, 25}, {
+        87, 26}}, 0.15]}, 
       {RGBColor[0.800498, 0.201504, 0.192061], 
-       CylinderBox[{{76, 79}, {77, 81}}, 0.08]}}, 
+       CylinderBox[{{79, 82}, {80, 84}}, 0.08]}}, 
      {Opacity[0.7]}}]},
   Boxed->False,
-  ImageSize->{354.34117209925637`, 426.5377286701155},
+  ImageSize->{387.66058468051784`, 327.34800666592787`},
   ImageSizeRaw->Automatic,
   Lighting->"Neutral",
-  ViewPoint->{-0.20488117259880526`, 3.180216437150761, 1.1263423626902518`},
-  ViewVertical->{-0.5906478651742076, -0.6353368713120899, \
--0.49747578766862205`}]], "Output",
+  ViewPoint->{0.8998057037564776, -3.0890714247515954`, -1.0355614072909751`},
+  ViewVertical->{
+   0.22820700434742103`, -0.7954688655119766, -0.5613829772694083}]], "Output",
  CellChangeTimes->{{3.7686372122657957`*^9, 3.768637233904654*^9}, 
    3.7686377550549297`*^9, 3.768637823396039*^9, 3.768637854340711*^9, 
    3.768638061648673*^9, {3.7686380987853413`*^9, 3.7686381895764217`*^9}, {
-   3.768638352666751*^9, 3.768638405647358*^9}, 3.768638651205349*^9},
- CellLabel->"Out[40]=",ExpressionUUID->"f8e34c97-ef3c-4178-9e25-e436a6e81698"]
+   3.768638352666751*^9, 3.768638405647358*^9}, 3.768638651205349*^9, {
+   3.769254465067168*^9, 3.769254526369259*^9}},
+ CellLabel->"Out[61]=",ExpressionUUID->"b8dc62e6-ece6-4655-ad20-8d720a459940"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1558,7 +1560,6 @@ Cell[BoxData[
             RowBox[{
              RowBox[{"fchk", "[", 
               RowBox[{"[", "1", "]"}], "]"}], ",", "#"}], "]"}], "&"}], "/@", 
-          
           RowBox[{"Sector", "[", 
            RowBox[{
             RowBox[{"Transpose", "[", 
@@ -1899,6 +1900,7 @@ LN+RwmnAofIR0U9/IYbiPOFRihZCRm2FzjyaBqdXHta7oiI4MHvstskhhf/3
                   0.020016588010801743`}}, {
                   0.43392739557999055`, -0.16168399511341666`}}, {{{
                   0.020016588010801743`, 0.}, {0., 
+                  
                   0.020016588010801743`}}, {-0.5660726044200095, \
 -0.16168399511341666`}}}], 
                GeometricTransformationBox[{
@@ -2163,7 +2165,7 @@ Cell[BoxData[
                DynamicBox[ToBoxes[
                  FEPrivate`FrontEndResource[
                  "FEStrings", "sizeBriefExplanation"], StandardForm],
-                ImageSizeCache->{58., {2., 8.}}],
+                ImageSizeCache->{60., {32., 19.}}],
                StripOnInput->False,
                DynamicUpdating->True,
                LineSpacing->{1, 2},
@@ -2194,7 +2196,7 @@ Cell[BoxData[
               DynamicBox[ToBoxes[
                 FEPrivate`FrontEndResource["FEStrings", "sizeShowLess"], 
                 StandardForm],
-               ImageSizeCache->{50., {0., 8.}}],
+               ImageSizeCache->{87., {1., 15.}}],
               StripOnInput->False,
               DynamicUpdating->True,
               LineSpacing->{1, 2},
@@ -2231,7 +2233,7 @@ Cell[BoxData[
               DynamicBox[ToBoxes[
                 FEPrivate`FrontEndResource["FEStrings", "sizeShowMore"], 
                 StandardForm],
-               ImageSizeCache->{56., {0., 8.}}],
+               ImageSizeCache->{54., {34., 19.}}],
               StripOnInput->False,
               DynamicUpdating->True,
               LineSpacing->{1, 2},
@@ -2268,7 +2270,7 @@ Cell[BoxData[
               DynamicBox[ToBoxes[
                 FEPrivate`FrontEndResource["FEStrings", "sizeShowAll"], 
                 StandardForm],
-               ImageSizeCache->{42., {0., 8.}}],
+               ImageSizeCache->{74., {1., 15.}}],
               StripOnInput->False,
               DynamicUpdating->True,
               LineSpacing->{1, 2},
@@ -2305,7 +2307,7 @@ Cell[BoxData[
               DynamicBox[ToBoxes[
                 FEPrivate`FrontEndResource["FEStrings", "sizeChangeLimit"], 
                 StandardForm],
-               ImageSizeCache->{74., {0., 8.}}],
+               ImageSizeCache->{69., {34., 19.}}],
               StripOnInput->False,
               DynamicUpdating->True,
               LineSpacing->{1, 2},
@@ -2390,36 +2392,26 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"PyscfScriptGeneratorRHF", "[", 
-  RowBox[{
-   RowBox[{"CoordinateGenerator", "[", 
-    RowBox[{"fchk", "[", 
-     RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", "\"\<6-31g\>\""}], 
-  "]"}]], "Input",
+ RowBox[{"Export", "[", 
+  RowBox[{"\"\<test.txt\>\"", ",", 
+   RowBox[{"PyscfScriptGeneratorRHF", "[", 
+    RowBox[{
+     RowBox[{"CoordinateGenerator", "[", 
+      RowBox[{"fchk", "[", 
+       RowBox[{"[", "1", "]"}], "]"}], "]"}], ",", "\"\<6-31g\>\""}], "]"}]}],
+   "]"}]], "Input",
  CellChangeTimes->{{3.769224780244809*^9, 3.7692247816186543`*^9}, {
   3.769224823424468*^9, 3.769224849694188*^9}, {3.769224906813508*^9, 
-  3.769224930898417*^9}, {3.7692459086637*^9, 3.7692459177836018`*^9}},
- CellLabel->"In[80]:=",ExpressionUUID->"294a84a6-fac9-4c2c-a515-5429e50166a3"],
+  3.769224930898417*^9}, {3.7692459086637*^9, 3.7692459177836018`*^9}, {
+  3.769253054839776*^9, 3.7692530583384233`*^9}, {3.769254319693117*^9, 
+  3.76925432113227*^9}, {3.769254379698705*^9, 3.7692543855939455`*^9}},
+ CellLabel->"In[56]:=",ExpressionUUID->"294a84a6-fac9-4c2c-a515-5429e50166a3"],
 
-Cell[BoxData["\<\"import pyscf, math\\nimport numpy\\nfrom pyscf import gto, \
-scf, mcscf,dft\\n\\nmol = gto.Mole()\\nmol.build(\\n# verbose = 4,\\nsymmetry \
-= False,\\natom =\\n'''\\nC   5.56149   -6.05103   2.37318\\nC   8.40752   \
--2.29508   4.2237\\nC   10.3591   0.248426   0.315602\\nC   8.70696   \
--1.91694   -3.94454\\nC   5.74719   -5.81715   -2.67037\\nH   3.69595   \
--8.66899   4.42474\\nH   9.06726   -1.58939   7.91222\\nH   12.7282   3.22798 \
-  0.541187\\nH   9.61712   -0.864937   -7.49416\\nH   4.00703   -8.1951   \
--5.09003\\nFe   2.37288   0.912083   0.0496167\\nC   -1.09385   7.69903   \
-2.7545\\nC   -4.01763   3.8177   4.0392\\nC   -0.901393   7.92019   \
--2.31211\\nH   0.601166   10.1164   5.16709\\nC   -5.62148   1.57732   \
--0.235505\\nH   -4.90856   2.78983   7.60129\\nC   -3.68692   4.16791   \
--4.14938\\nH   0.962445   10.5403   -4.36078\\nH   -4.3563   3.38887   \
--7.81772\\nC   -8.88933   -2.49667   -0.712864\\nO   -9.78442   -4.20533   \
--4.63694\\nC   -11.1718   -4.49608   3.72458\\nH   -8.49288   -5.64629   \
-6.27207\\nH   -13.3617   -1.80983   5.4495\\nH   -13.3782   -7.50616   \
-2.76406\\n'''\\n,\\nbasis='6-31g'\\n\\n)\\nmf.kernel()\\n\\nmf.analyze()\\n\"\
-\>"], "Output",
- CellChangeTimes->{3.769245918525334*^9, 3.769246149676882*^9},
- CellLabel->"Out[80]=",ExpressionUUID->"915bdde7-0dbb-42e6-a88a-75b83ceb90a1"]
+Cell[BoxData["\<\"test.txt\"\>"], "Output",
+ CellChangeTimes->{
+  3.769245918525334*^9, 3.769246149676882*^9, 3.769254243575601*^9, {
+   3.7692542859314165`*^9, 3.769254302980794*^9}, 3.7692543859699407`*^9},
+ CellLabel->"Out[56]=",ExpressionUUID->"d39c9d24-191c-40b8-94a7-3c590f4eb42b"]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2447,12 +2439,542 @@ Cell[BoxData[
       FractionBox["1", "2"], ",", "1"}], "}"}]}], "}"}], "}"}]], "Output",
  CellChangeTimes->{{3.769245978890785*^9, 3.769245996277615*^9}},
  CellLabel->"Out[67]=",ExpressionUUID->"dd3e95aa-50b0-4448-9455-aa5eb1ec508e"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Export", "[", 
+  RowBox[{
+  "\"\<test.txt\>\"", ",", 
+   "\"\<import pyscf, math\\nimport numpy\\nfrom pyscf import gto, scf, \
+mcscf,dft\\n\\nmol = gto.Mole()\\nmol.build(\\n# verbose = 4,\\nsymmetry = \
+False,\\natom =\\n'''\\nC   5.56149   -6.05103   2.37318\\nC   8.40752   \
+-2.29508   4.2237\\nC   10.3591   0.248426   0.315602\\nC   8.70696   \
+-1.91694   -3.94454\\nC   5.74719   -5.81715   -2.67037\\nH   3.69595   \
+-8.66899   4.42474\\nH   9.06726   -1.58939   7.91222\\nH   12.7282   3.22798 \
+  0.541187\\nH   9.61712   -0.864937   -7.49416\\nH   4.00703   -8.1951   \
+-5.09003\\nFe   2.37288   0.912083   0.0496167\\nC   -1.09385   7.69903   \
+2.7545\\nC   -4.01763   3.8177   4.0392\\nC   -0.901393   7.92019   \
+-2.31211\\nH   0.601166   10.1164   5.16709\\nC   -5.62148   1.57732   \
+-0.235505\\nH   -4.90856   2.78983   7.60129\\nC   -3.68692   4.16791   \
+-4.14938\\nH   0.962445   10.5403   -4.36078\\nH   -4.3563   3.38887   \
+-7.81772\\nC   -8.88933   -2.49667   -0.712864\\nO   -9.78442   -4.20533   \
+-4.63694\\nC   -11.1718   -4.49608   3.72458\\nH   -8.49288   -5.64629   \
+6.27207\\nH   -13.3617   -1.80983   5.4495\\nH   -13.3782   -7.50616   \
+2.76406\\n'''\\n,\\nbasis='6-31g'\\n\\n)\\nmf.kernel()\\n\\nmf.analyze()\>\""}\
+], "]"}]], "Input",
+ CellChangeTimes->{{3.7692530664627047`*^9, 3.7692530768170247`*^9}},
+ CellLabel->"In[25]:=",ExpressionUUID->"dfad9f12-0701-45c8-bf49-e52bffff5c90"],
+
+Cell[BoxData["\<\"test.txt\"\>"], "Output",
+ CellChangeTimes->{3.7692530809380074`*^9},
+ CellLabel->"Out[25]=",ExpressionUUID->"0d1010a1-0945-46c1-91e6-8d1e904679d8"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Directory", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7692530813907976`*^9, 3.7692530826195126`*^9}},
+ CellLabel->"In[26]:=",ExpressionUUID->"b7e211a2-0315-498f-97f2-33b71446c6b4"],
+
+Cell[BoxData["\<\"C:\\\\Users\\\\70967\\\\Documents\\\\Ferrocene\"\>"], \
+"Output",
+ CellChangeTimes->{3.769253082897769*^9},
+ CellLabel->"Out[26]=",ExpressionUUID->"2e6a1ba8-23cf-4abd-9158-c65e55a0869c"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ElementData", "[", "]"}]], "Input",
+ CellChangeTimes->{{3.7692540489036813`*^9, 3.769254051388039*^9}},
+ CellLabel->"In[27]:=",ExpressionUUID->"8cf813b5-f0ad-47d5-ad70-59ef0240cad3"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   TemplateBox[{"\"hydrogen\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Hydrogen\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Hydrogen\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"helium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Helium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Helium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"lithium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Lithium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Lithium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"beryllium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Beryllium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Beryllium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"boron\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Boron\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Boron\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"carbon\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Carbon\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Carbon\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"nitrogen\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Nitrogen\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Nitrogen\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"oxygen\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Oxygen\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Oxygen\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"fluorine\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Fluorine\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Fluorine\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"neon\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Neon\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Neon\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"sodium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Sodium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Sodium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"magnesium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Magnesium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Magnesium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"aluminum\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Aluminum\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Aluminum\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"silicon\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Silicon\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Silicon\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"phosphorus\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Phosphorus\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Phosphorus\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"sulfur\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Sulfur\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Sulfur\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"chlorine\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Chlorine\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Chlorine\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"argon\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Argon\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Argon\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"potassium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Potassium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Potassium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"calcium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Calcium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Calcium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"scandium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Scandium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Scandium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"titanium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Titanium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Titanium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"vanadium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Vanadium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Vanadium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"chromium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Chromium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Chromium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"manganese\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Manganese\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Manganese\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"iron\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Iron\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Iron\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"cobalt\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Cobalt\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Cobalt\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"nickel\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Nickel\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Nickel\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"copper\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Copper\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Copper\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"zinc\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Zinc\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Zinc\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"gallium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Gallium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Gallium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"germanium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Germanium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Germanium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"arsenic\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Arsenic\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Arsenic\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"selenium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Selenium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Selenium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"bromine\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Bromine\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Bromine\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"krypton\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Krypton\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Krypton\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"rubidium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Rubidium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Rubidium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"strontium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Strontium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Strontium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"yttrium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Yttrium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Yttrium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"zirconium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Zirconium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Zirconium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"niobium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Niobium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Niobium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"molybdenum\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Molybdenum\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Molybdenum\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"technetium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Technetium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Technetium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"ruthenium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Ruthenium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Ruthenium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"rhodium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Rhodium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Rhodium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"palladium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Palladium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Palladium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"silver\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Silver\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Silver\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"cadmium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Cadmium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Cadmium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"indium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Indium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Indium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"tin\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Tin\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Tin\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"antimony\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Antimony\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Antimony\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"tellurium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Tellurium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Tellurium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"iodine\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Iodine\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Iodine\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"xenon\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Xenon\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Xenon\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"cesium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Cesium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Cesium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"barium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Barium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Barium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"lanthanum\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Lanthanum\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Lanthanum\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"cerium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Cerium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Cerium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"praseodymium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Praseodymium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Praseodymium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"neodymium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Neodymium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Neodymium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"promethium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Promethium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Promethium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"samarium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Samarium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Samarium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"europium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Europium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Europium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"gadolinium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Gadolinium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Gadolinium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"terbium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Terbium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Terbium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"dysprosium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Dysprosium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Dysprosium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"holmium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Holmium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Holmium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"erbium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Erbium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Erbium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"thulium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Thulium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Thulium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"ytterbium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Ytterbium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Ytterbium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"lutetium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Lutetium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Lutetium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"hafnium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Hafnium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Hafnium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"tantalum\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Tantalum\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Tantalum\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"tungsten\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Tungsten\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Tungsten\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"rhenium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Rhenium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Rhenium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"osmium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Osmium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Osmium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"iridium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Iridium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Iridium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"platinum\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Platinum\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Platinum\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"gold\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Gold\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Gold\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"mercury\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Mercury\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Mercury\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"thallium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Thallium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Thallium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"lead\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Lead\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Lead\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"bismuth\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Bismuth\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Bismuth\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"polonium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Polonium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Polonium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"astatine\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Astatine\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Astatine\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"radon\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Radon\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Radon\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"francium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Francium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Francium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"radium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Radium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Radium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"actinium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Actinium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Actinium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"thorium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Thorium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Thorium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"protactinium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Protactinium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Protactinium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"uranium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Uranium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Uranium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"neptunium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Neptunium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Neptunium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"plutonium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Plutonium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Plutonium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"americium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Americium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Americium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"curium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Curium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Curium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"berkelium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Berkelium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Berkelium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"californium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Californium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Californium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"einsteinium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Einsteinium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Einsteinium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"fermium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Fermium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Fermium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"mendelevium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Mendelevium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Mendelevium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"nobelium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Nobelium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Nobelium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"lawrencium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Lawrencium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Lawrencium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"rutherfordium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Rutherfordium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Rutherfordium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"dubnium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Dubnium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Dubnium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"seaborgium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Seaborgium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Seaborgium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"bohrium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Bohrium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Bohrium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"hassium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Hassium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Hassium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"meitnerium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Meitnerium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Meitnerium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"darmstadtium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Darmstadtium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Darmstadtium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"roentgenium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Roentgenium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Roentgenium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"copernicium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Copernicium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Copernicium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"nihonium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Nihonium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Nihonium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"flerovium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Flerovium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Flerovium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"moscovium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Moscovium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Moscovium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"livermorium\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Livermorium\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Livermorium\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"tennessine\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Tennessine\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Tennessine\\\"]\"","\"element\""},
+    "Entity"], ",", 
+   TemplateBox[{"\"oganesson\"",RowBox[{"Entity", "[", 
+       RowBox[{"\"Element\"", ",", "\"Oganesson\""}], "]"}],
+     "\"Entity[\\\"Element\\\", \\\"Oganesson\\\"]\"","\"element\""},
+    "Entity"]}], "}"}]], "Output",
+ CellChangeTimes->{3.7692541564375353`*^9},
+ CellLabel->"Out[27]=",ExpressionUUID->"95fde92b-d8be-40f6-9ed3-2f26c14dfe32"]
 }, Open  ]]
 },
-WindowSize->{808, 612},
-WindowMargins->{{114, Automatic}, {Automatic, 31}},
+WindowSize->{1920, 997},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
 WindowStatusArea->None,
-FrontEndVersion->"12.0 for Mac OS X x86 (64-bit) (April 8, 2019)",
+FrontEndVersion->"12.0 for Microsoft Windows (64-bit) (April 8, 2019)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -2466,95 +2988,108 @@ CellTagsIndex->{}
 *)
 (*NotebookFileOutline
 Notebook[{
-Cell[558, 20, 273, 6, 30, "Input",ExpressionUUID->"6ed009b2-0620-4635-b1f4-d0d6735d8a5a"],
-Cell[834, 28, 373, 9, 30, "Input",ExpressionUUID->"f7a1b7c4-4d6b-4c8d-84fb-8bb799028786"],
+Cell[558, 20, 273, 6, 43, "Input",ExpressionUUID->"6ed009b2-0620-4635-b1f4-d0d6735d8a5a"],
+Cell[834, 28, 295, 7, 43, "Input",ExpressionUUID->"2fa418d0-8388-4294-bc99-d66614a846b3"],
+Cell[1132, 37, 373, 9, 43, "Input",ExpressionUUID->"f7a1b7c4-4d6b-4c8d-84fb-8bb799028786"],
 Cell[CellGroupData[{
-Cell[1232, 41, 221, 3, 30, "Input",ExpressionUUID->"632b1065-7d74-46dd-ba63-1d8bd66a6827"],
-Cell[1456, 46, 343, 6, 34, "Output",ExpressionUUID->"0148ea3c-3b68-42ff-891a-3b569409efa2"]
+Cell[1530, 50, 221, 3, 43, "Input",ExpressionUUID->"632b1065-7d74-46dd-ba63-1d8bd66a6827"],
+Cell[1754, 55, 343, 6, 49, "Output",ExpressionUUID->"0148ea3c-3b68-42ff-891a-3b569409efa2"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1836, 57, 368, 9, 30, "Input",ExpressionUUID->"89cbf44f-abfc-4e3a-925f-3f8e8011ec69"],
-Cell[2207, 68, 190, 3, 34, "Output",ExpressionUUID->"5bfe5d32-302d-47d1-bc14-fcc780083157"]
+Cell[2134, 66, 368, 9, 43, "Input",ExpressionUUID->"89cbf44f-abfc-4e3a-925f-3f8e8011ec69"],
+Cell[2505, 77, 190, 3, 49, "Output",ExpressionUUID->"5bfe5d32-302d-47d1-bc14-fcc780083157"]
 }, Open  ]],
-Cell[2412, 74, 816, 23, 52, "Input",ExpressionUUID->"69df51dc-fe18-463f-98c9-9f4401d37d3c"],
+Cell[2710, 83, 816, 23, 43, "Input",ExpressionUUID->"69df51dc-fe18-463f-98c9-9f4401d37d3c"],
 Cell[CellGroupData[{
-Cell[3253, 101, 201, 3, 30, "Input",ExpressionUUID->"4d8bf2ba-c090-4022-ba4e-c1a8b9817a4b"],
-Cell[3457, 106, 202, 3, 34, "Output",ExpressionUUID->"cc2dd8c4-d31a-4437-8912-7b874734a5bd"]
+Cell[3551, 110, 201, 3, 43, "Input",ExpressionUUID->"4d8bf2ba-c090-4022-ba4e-c1a8b9817a4b"],
+Cell[3755, 115, 202, 3, 49, "Output",ExpressionUUID->"cc2dd8c4-d31a-4437-8912-7b874734a5bd"]
 }, Open  ]],
-Cell[3674, 112, 18312, 422, 5344, "Input",ExpressionUUID->"e760281f-07b2-4614-9382-911c940e10b0"],
+Cell[3972, 121, 17973, 411, 7033, "Input",ExpressionUUID->"e760281f-07b2-4614-9382-911c940e10b0"],
 Cell[CellGroupData[{
-Cell[22011, 538, 1078, 21, 30, "Input",ExpressionUUID->"591c816b-a464-4d75-a4f0-e0b18aa51f60"],
-Cell[23092, 561, 2165, 44, 420, "Output",ExpressionUUID->"27daa1ac-1b5a-41c9-bb7e-1e819bb4ee74"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[25294, 610, 548, 10, 52, "Input",ExpressionUUID->"84c2f8df-41f9-4afd-ae62-a902679c2fae"],
-Cell[25845, 622, 460, 8, 34, "Output",ExpressionUUID->"43f105c7-f88c-4796-8f58-c02b7ad275a8"]
-}, Open  ]],
-Cell[26320, 633, 2963, 72, 220, "Input",ExpressionUUID->"27399437-4278-4bc5-b95d-827ca998e2f0"],
-Cell[29286, 707, 426, 12, 52, "Input",ExpressionUUID->"a468694b-d9b8-4b36-8ac2-c9a35ac2bd61"],
-Cell[29715, 721, 432, 12, 30, "Input",ExpressionUUID->"0bda39ea-fd1d-4b79-867e-72d90f80eeea"],
-Cell[CellGroupData[{
-Cell[30172, 737, 1042, 26, 52, "Input",ExpressionUUID->"ce01df80-626f-45f3-bbd2-9440e6199e97"],
-Cell[31217, 765, 1363, 34, 473, "Output",ExpressionUUID->"e2ea1311-1330-4b9f-9cae-96e10cc8619a"]
+Cell[21970, 536, 1078, 21, 43, "Input",ExpressionUUID->"591c816b-a464-4d75-a4f0-e0b18aa51f60"],
+Cell[23051, 559, 2165, 44, 630, "Output",ExpressionUUID->"27daa1ac-1b5a-41c9-bb7e-1e819bb4ee74"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32617, 804, 498, 14, 30, "Input",ExpressionUUID->"8dde188a-54b0-4694-b4c7-e104f6c3d77c"],
-Cell[33118, 820, 1102, 29, 427, "Output",ExpressionUUID->"1e69b66b-b838-4f7f-9ca3-7c2d36807d4b"]
+Cell[25253, 608, 548, 10, 43, "Input",ExpressionUUID->"84c2f8df-41f9-4afd-ae62-a902679c2fae"],
+Cell[25804, 620, 460, 8, 49, "Output",ExpressionUUID->"43f105c7-f88c-4796-8f58-c02b7ad275a8"]
 }, Open  ]],
-Cell[34235, 852, 802, 16, 325, "Input",ExpressionUUID->"9dadf104-d07c-4fc1-8c81-540981682934"],
-Cell[35040, 870, 163, 3, 30, "Input",ExpressionUUID->"f6771070-5c03-4b4c-91ec-6a4a4e889019"],
-Cell[35206, 875, 748, 18, 52, "Input",ExpressionUUID->"89ddb00d-1a5f-4a9b-91c9-2e62a578c96e"],
-Cell[35957, 895, 6116, 146, 451, "Input",ExpressionUUID->"4b94d4bc-3607-4074-9818-08885f85f17f"],
-Cell[42076, 1043, 156, 3, 30, "Input",ExpressionUUID->"615836b7-8ed2-47eb-8805-cb328b728b32"],
+Cell[26279, 631, 2963, 72, 247, "Input",ExpressionUUID->"27399437-4278-4bc5-b95d-827ca998e2f0"],
+Cell[29245, 705, 426, 12, 73, "Input",ExpressionUUID->"a468694b-d9b8-4b36-8ac2-c9a35ac2bd61"],
+Cell[29674, 719, 432, 12, 43, "Input",ExpressionUUID->"0bda39ea-fd1d-4b79-867e-72d90f80eeea"],
 Cell[CellGroupData[{
-Cell[42257, 1050, 591, 12, 30, "Input",ExpressionUUID->"2f195a93-d311-4b7b-af66-1df31f0e31dd"],
-Cell[42851, 1064, 536, 12, 24, "Message",ExpressionUUID->"fd44e459-304f-4d03-a2c6-4a9f5ff94558"],
-Cell[43390, 1078, 4719, 83, 444, "Output",ExpressionUUID->"f8e34c97-ef3c-4178-9e25-e436a6e81698"]
+Cell[30131, 735, 1042, 26, 43, "Input",ExpressionUUID->"ce01df80-626f-45f3-bbd2-9440e6199e97"],
+Cell[31176, 763, 1363, 34, 710, "Output",ExpressionUUID->"e2ea1311-1330-4b9f-9cae-96e10cc8619a"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[48146, 1166, 3788, 90, 199, "Input",ExpressionUUID->"6e89a569-ae3d-4672-a04a-8e52d4a8f940"],
-Cell[51937, 1258, 4335, 108, 224, "Output",ExpressionUUID->"a32c9971-2c41-4a6b-82bf-54eaf453c586"]
+Cell[32576, 802, 498, 14, 43, "Input",ExpressionUUID->"8dde188a-54b0-4694-b4c7-e104f6c3d77c"],
+Cell[33077, 818, 1102, 29, 640, "Output",ExpressionUUID->"1e69b66b-b838-4f7f-9ca3-7c2d36807d4b"]
+}, Open  ]],
+Cell[34194, 850, 802, 16, 450, "Input",ExpressionUUID->"9dadf104-d07c-4fc1-8c81-540981682934"],
+Cell[34999, 868, 163, 3, 43, "Input",ExpressionUUID->"f6771070-5c03-4b4c-91ec-6a4a4e889019"],
+Cell[35165, 873, 748, 18, 43, "Input",ExpressionUUID->"89ddb00d-1a5f-4a9b-91c9-2e62a578c96e"],
+Cell[35916, 893, 6116, 146, 392, "Input",ExpressionUUID->"4b94d4bc-3607-4074-9818-08885f85f17f"],
+Cell[42035, 1041, 156, 3, 43, "Input",ExpressionUUID->"615836b7-8ed2-47eb-8805-cb328b728b32"],
+Cell[CellGroupData[{
+Cell[42216, 1048, 637, 12, 43, "Input",ExpressionUUID->"2f195a93-d311-4b7b-af66-1df31f0e31dd"],
+Cell[42856, 1062, 586, 13, 35, "Message",ExpressionUUID->"322c5486-658d-4139-b790-f54bd0bfe487"],
+Cell[43445, 1077, 4883, 86, 517, "Output",ExpressionUUID->"b8dc62e6-ece6-4655-ad20-8d720a459940"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[56309, 1371, 2152, 56, 178, "Input",ExpressionUUID->"d22e0e91-9604-4710-ab77-bb0894ae1eef"],
-Cell[58464, 1429, 6903, 98, 497, "Output",ExpressionUUID->"e890f378-c241-4046-b312-94a80ab10959"]
+Cell[48365, 1168, 3788, 90, 189, "Input",ExpressionUUID->"6e89a569-ae3d-4672-a04a-8e52d4a8f940"],
+Cell[52156, 1260, 4335, 108, 166, "Output",ExpressionUUID->"a32c9971-2c41-4a6b-82bf-54eaf453c586"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[65404, 1532, 2648, 66, 199, "Input",ExpressionUUID->"5f18e12e-bc7a-4a26-8c38-c86230b72121"],
-Cell[68055, 1600, 3012, 44, 76, "Message",ExpressionUUID->"1a90e7fe-1c63-40e2-b238-b1d0a0a5ced0"],
-Cell[71070, 1646, 7303, 102, 497, "Output",ExpressionUUID->"b1214508-e40f-462f-aad0-8fc4cbc7ef29"]
+Cell[56528, 1373, 2152, 56, 218, "Input",ExpressionUUID->"d22e0e91-9604-4710-ab77-bb0894ae1eef"],
+Cell[58683, 1431, 6903, 98, 398, "Output",ExpressionUUID->"e890f378-c241-4046-b312-94a80ab10959"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[78410, 1753, 280, 6, 30, "Input",ExpressionUUID->"768ae84a-6254-482b-827b-e767383802df"],
-Cell[78693, 1761, 226, 5, 34, "Output",ExpressionUUID->"50cd9188-4c56-4934-9fd0-77b0eb74e3ed"]
+Cell[65623, 1534, 2637, 65, 363, "Input",ExpressionUUID->"5f18e12e-bc7a-4a26-8c38-c86230b72121"],
+Cell[68263, 1601, 3012, 44, 181, "Message",ExpressionUUID->"1a90e7fe-1c63-40e2-b238-b1d0a0a5ced0"],
+Cell[71278, 1647, 7303, 102, 1036, "Output",ExpressionUUID->"b1214508-e40f-462f-aad0-8fc4cbc7ef29"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[78956, 1771, 304, 6, 30, "Input",ExpressionUUID->"54978b51-2119-4c4a-b47d-1a43c47d2caf"],
-Cell[79263, 1779, 226, 5, 34, "Output",ExpressionUUID->"44223276-7e49-42e7-8b88-f4405d11c62f"]
+Cell[78618, 1754, 280, 6, 43, "Input",ExpressionUUID->"768ae84a-6254-482b-827b-e767383802df"],
+Cell[78901, 1762, 226, 5, 49, "Output",ExpressionUUID->"50cd9188-4c56-4934-9fd0-77b0eb74e3ed"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[79526, 1789, 307, 6, 30, "Input",ExpressionUUID->"1fc06b27-7817-459e-a012-cf63af11a697"],
-Cell[79836, 1797, 226, 5, 34, "Output",ExpressionUUID->"5790421e-2120-4903-9d86-442e599eeb31"]
+Cell[79164, 1772, 304, 6, 43, "Input",ExpressionUUID->"54978b51-2119-4c4a-b47d-1a43c47d2caf"],
+Cell[79471, 1780, 226, 5, 49, "Output",ExpressionUUID->"44223276-7e49-42e7-8b88-f4405d11c62f"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[80099, 1807, 451, 12, 30, "Input",ExpressionUUID->"82a74822-d529-4c8d-b957-aac36084783a"],
-Cell[80553, 1821, 15773, 307, 92, "Output",ExpressionUUID->"be77a973-335d-431a-bb0a-dd5a4776a75d"]
+Cell[79734, 1790, 307, 6, 43, "Input",ExpressionUUID->"1fc06b27-7817-459e-a012-cf63af11a697"],
+Cell[80044, 1798, 226, 5, 49, "Output",ExpressionUUID->"5790421e-2120-4903-9d86-442e599eeb31"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[96363, 2133, 227, 4, 30, "Input",ExpressionUUID->"33ae6ac9-e3c8-44a6-b7a8-8028bbbc72d6"],
-Cell[96593, 2139, 9017, 230, 180, "Output",ExpressionUUID->"4e5a5119-2b0d-4192-bf67-9741b2523098"]
+Cell[80307, 1808, 451, 12, 43, "Input",ExpressionUUID->"82a74822-d529-4c8d-b957-aac36084783a"],
+Cell[80761, 1822, 15792, 308, 204, "Output",ExpressionUUID->"be77a973-335d-431a-bb0a-dd5a4776a75d"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[105647, 2374, 220, 3, 30, "Input",ExpressionUUID->"64c49e3d-6f32-43ff-afec-2159a3a76b37"],
-Cell[105870, 2379, 390, 7, 56, "Output",ExpressionUUID->"60efdde1-02ec-4fb7-99c2-7212fcf8a114"]
+Cell[96590, 2135, 227, 4, 43, "Input",ExpressionUUID->"33ae6ac9-e3c8-44a6-b7a8-8028bbbc72d6"],
+Cell[96820, 2141, 9025, 230, 444, "Output",ExpressionUUID->"4e5a5119-2b0d-4192-bf67-9741b2523098"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[106297, 2391, 511, 10, 30, "Input",ExpressionUUID->"294a84a6-fac9-4c2c-a515-5429e50166a3"],
-Cell[106811, 2403, 1366, 18, 959, "Output",ExpressionUUID->"915bdde7-0dbb-42e6-a88a-75b83ceb90a1"]
+Cell[105882, 2376, 220, 3, 43, "Input",ExpressionUUID->"64c49e3d-6f32-43ff-afec-2159a3a76b37"],
+Cell[106105, 2381, 390, 7, 79, "Output",ExpressionUUID->"60efdde1-02ec-4fb7-99c2-7212fcf8a114"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[108214, 2426, 440, 12, 30, "Input",ExpressionUUID->"90547876-b3a9-4e29-b43c-7de9c4a464f2"],
-Cell[108657, 2440, 326, 8, 50, "Output",ExpressionUUID->"dd3e95aa-50b0-4448-9455-aa5eb1ec508e"]
+Cell[106532, 2393, 738, 14, 102, "Input",ExpressionUUID->"294a84a6-fac9-4c2c-a515-5429e50166a3"],
+Cell[107273, 2409, 287, 4, 49, "Output",ExpressionUUID->"d39c9d24-191c-40b8-94a7-3c590f4eb42b"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[107597, 2418, 440, 12, 43, "Input",ExpressionUUID->"90547876-b3a9-4e29-b43c-7de9c4a464f2"],
+Cell[108040, 2432, 326, 8, 69, "Output",ExpressionUUID->"dd3e95aa-50b0-4448-9455-aa5eb1ec508e"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[108403, 2445, 1445, 22, 798, "Input",ExpressionUUID->"dfad9f12-0701-45c8-bf49-e52bffff5c90"],
+Cell[109851, 2469, 166, 2, 49, "Output",ExpressionUUID->"0d1010a1-0945-46c1-91e6-8d1e904679d8"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[110054, 2476, 206, 3, 43, "Input",ExpressionUUID->"b7e211a2-0315-498f-97f2-33b71446c6b4"],
+Cell[110263, 2481, 204, 3, 49, "Output",ExpressionUUID->"2e6a1ba8-23cf-4abd-9158-c65e55a0869c"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[110504, 2489, 206, 3, 43, "Input",ExpressionUUID->"8cf813b5-f0ad-47d5-ad70-59ef0240cad3"],
+Cell[110713, 2494, 24297, 476, 1083, "Output",ExpressionUUID->"95fde92b-d8be-40f6-9ed3-2f26c14dfe32"]
 }, Open  ]]
 }
 ]
